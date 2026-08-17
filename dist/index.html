@@ -12,20 +12,20 @@
     <!-- TODO: подключить @font-face для Literatura Present и ABC Social (woff2) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap&_v=20260817200543" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap&_v=20260817202521" rel="stylesheet">
 
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.min.css?_v=20260817200543">
+    <link rel="stylesheet" href="css/style.min.css?_v=20260817202521">
 
     <link
       rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css?_v=20260817200543"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css?_v=20260817202521"
     />
 
     <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js?_v=20260817200543"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js?_v=20260817200543"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js?_v=20260817202521"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js?_v=20260817202521"></script>
 
     <title>Главная</title>
 </head>
@@ -221,7 +221,7 @@
     </div>
     <div class="practitioners__slider swiper">
         <div class="swiper-wrapper">
-            <div class="practitioners__slide swiper-slide">
+            <div class="practitioners__slide swiper-slide" data-category="psychic-readings">
                 <div class="practitioners__card">
                     <img src="img/practitioners/1.png" alt="" class="practitioners__card-img">
                     <div class="practitioners__card-overlay">
@@ -235,63 +235,7 @@
                     </div>
                 </div>
             </div>
-            <div class="practitioners__slide swiper-slide">
-                <div class="practitioners__card">
-                    <img src="img/practitioners/2.png" alt="" class="practitioners__card-img">
-                    <div class="practitioners__card-overlay">
-                        <div class="practitioners__card-info">
-                            <div class="practitioners__card-name-wrap">
-                                <h3 class="practitioners__card-name">Marcus</h3>
-                                <span class="practitioners__card-tag">Tarot readings</span>
-                            </div>
-                            <p class="practitioners__card-desc">A master of tarot with over 20 years of experience guiding seekers through life's crossroads.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="practitioners__slide swiper-slide">
-                <div class="practitioners__card">
-                    <img src="img/practitioners/3.png" alt="" class="practitioners__card-img">
-                    <div class="practitioners__card-overlay">
-                        <div class="practitioners__card-info">
-                            <div class="practitioners__card-name-wrap">
-                                <h3 class="practitioners__card-name">Elena</h3>
-                                <span class="practitioners__card-tag">Astrology & horoscopes</span>
-                            </div>
-                            <p class="practitioners__card-desc">Certified astrologer and chakra healer, bringing cosmic wisdom to every reading.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="practitioners__slide swiper-slide">
-                <div class="practitioners__card">
-                    <img src="img/practitioners/4.png" alt="" class="practitioners__card-img">
-                    <div class="practitioners__card-overlay">
-                        <div class="practitioners__card-info">
-                            <div class="practitioners__card-name-wrap">
-                                <h3 class="practitioners__card-name">Hiroshi</h3>
-                                <span class="practitioners__card-tag">Oracle guidance</span>
-                            </div>
-                            <p class="practitioners__card-desc">A gentle oracle reader who helps you see the patterns hidden in plain sight.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="practitioners__slide swiper-slide">
-                <div class="practitioners__card">
-                    <img src="img/practitioners/5.png" alt="" class="practitioners__card-img">
-                    <div class="practitioners__card-overlay">
-                        <div class="practitioners__card-info">
-                            <div class="practitioners__card-name-wrap">
-                                <h3 class="practitioners__card-name">Amara</h3>
-                                <span class="practitioners__card-tag">Spiritual medium</span>
-                            </div>
-                            <p class="practitioners__card-desc">Connecting the seen and unseen with clarity, compassion, and deep spiritual insight.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="practitioners__slide swiper-slide">
+            <div class="practitioners__slide swiper-slide" data-category="psychic-readings">
                 <div class="practitioners__card">
                     <img src="img/practitioners/6.png" alt="" class="practitioners__card-img">
                     <div class="practitioners__card-overlay">
@@ -305,7 +249,21 @@
                     </div>
                 </div>
             </div>
-            <div class="practitioners__slide swiper-slide">
+            <div class="practitioners__slide swiper-slide" data-category="tarot-readings">
+                <div class="practitioners__card">
+                    <img src="img/practitioners/2.png" alt="" class="practitioners__card-img">
+                    <div class="practitioners__card-overlay">
+                        <div class="practitioners__card-info">
+                            <div class="practitioners__card-name-wrap">
+                                <h3 class="practitioners__card-name">Marcus</h3>
+                                <span class="practitioners__card-tag">Tarot readings</span>
+                            </div>
+                            <p class="practitioners__card-desc">A master of tarot with over 20 years of experience guiding seekers through life's crossroads.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="practitioners__slide swiper-slide" data-category="tarot-readings">
                 <div class="practitioners__card">
                     <img src="img/practitioners/7.png" alt="" class="practitioners__card-img">
                     <div class="practitioners__card-overlay">
@@ -319,7 +277,35 @@
                     </div>
                 </div>
             </div>
-            <div class="practitioners__slide swiper-slide">
+            <div class="practitioners__slide swiper-slide" data-category="astrology-horoscopes">
+                <div class="practitioners__card">
+                    <img src="img/practitioners/3.png" alt="" class="practitioners__card-img">
+                    <div class="practitioners__card-overlay">
+                        <div class="practitioners__card-info">
+                            <div class="practitioners__card-name-wrap">
+                                <h3 class="practitioners__card-name">Elena</h3>
+                                <span class="practitioners__card-tag">Astrology & horoscopes</span>
+                            </div>
+                            <p class="practitioners__card-desc">Certified astrologer and chakra healer, bringing cosmic wisdom to every reading.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="practitioners__slide swiper-slide" data-category="oracle-guidance">
+                <div class="practitioners__card">
+                    <img src="img/practitioners/4.png" alt="" class="practitioners__card-img">
+                    <div class="practitioners__card-overlay">
+                        <div class="practitioners__card-info">
+                            <div class="practitioners__card-name-wrap">
+                                <h3 class="practitioners__card-name">Hiroshi</h3>
+                                <span class="practitioners__card-tag">Oracle guidance</span>
+                            </div>
+                            <p class="practitioners__card-desc">A gentle oracle reader who helps you see the patterns hidden in plain sight.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="practitioners__slide swiper-slide" data-category="oracle-guidance">
                 <div class="practitioners__card">
                     <img src="img/practitioners/8.png" alt="" class="practitioners__card-img">
                     <div class="practitioners__card-overlay">
@@ -333,7 +319,21 @@
                     </div>
                 </div>
             </div>
-            <div class="practitioners__slide swiper-slide">
+            <div class="practitioners__slide swiper-slide" data-category="spiritual-medium">
+                <div class="practitioners__card">
+                    <img src="img/practitioners/5.png" alt="" class="practitioners__card-img">
+                    <div class="practitioners__card-overlay">
+                        <div class="practitioners__card-info">
+                            <div class="practitioners__card-name-wrap">
+                                <h3 class="practitioners__card-name">Amara</h3>
+                                <span class="practitioners__card-tag">Spiritual medium</span>
+                            </div>
+                            <p class="practitioners__card-desc">Connecting the seen and unseen with clarity, compassion, and deep spiritual insight.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="practitioners__slide swiper-slide" data-category="spiritual-medium">
                 <div class="practitioners__card">
                     <img src="img/practitioners/9.png" alt="" class="practitioners__card-img">
                     <div class="practitioners__card-overlay">
@@ -354,11 +354,11 @@
             <span class="practitioners__filters-label">BY SPECIALITY</span>
             <span class="practitioners__filters-line"></span>
             <div class="practitioners__filters-list">
-                <button class="practitioners__filter practitioners__filter_active">Psychic readings</button>
-                <button class="practitioners__filter">Tarot readings</button>
-                <button class="practitioners__filter">Astrology & horoscopes</button>
-                <button class="practitioners__filter">Oracle guidance</button>
-                <button class="practitioners__filter">Spiritual medium</button>
+                <button class="practitioners__filter practitioners__filter_active" data-category="psychic-readings">Psychic readings</button>
+                <button class="practitioners__filter" data-category="tarot-readings">Tarot readings</button>
+                <button class="practitioners__filter" data-category="astrology-horoscopes">Astrology & horoscopes</button>
+                <button class="practitioners__filter" data-category="oracle-guidance">Oracle guidance</button>
+                <button class="practitioners__filter" data-category="spiritual-medium">Spiritual medium</button>
             </div>
         </div>
         <a href="#" class="btn btn--primary">BEGIN YOUR JOURNEY</a>
@@ -368,6 +368,6 @@
             <div style="height: 100vh"></div>
         </main>
 
-        <script src="js/app.min.js?_v=20260817200543"></script>
+        <script src="js/app.min.js?_v=20260817202521"></script>
     </body>
 </html>

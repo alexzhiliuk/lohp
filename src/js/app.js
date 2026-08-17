@@ -57,34 +57,34 @@ if (questionsSection) {
 }
 
 // Practitioners slider
-if (document.querySelector('.practitioners__slider')) {
-    const GAP = 50;
-    const SCALES = [1, 0.85, 0.73, 0.63, 0.55];
-    const SLIDE_W = 354;
+const GAP = 50;
+const SCALES = [1, 0.85, 0.73, 0.63, 0.55];
+const SLIDE_W = 354;
+let practitionersSwiper = null;
 
-    function applyPractitionersTransforms(swiper) {
-        const activeIndex = swiper.activeIndex;
-        swiper.slides.forEach((slide, i) => {
-            const dist = Math.abs(i - activeIndex);
-            const scale = SCALES[Math.min(dist, SCALES.length - 1)];
-            // Compute translateX offset to compensate for scale shrink
-            let offsetX = 0;
-            if (dist > 0) {
-                const sign = i > activeIndex ? -1 : 1;
-                for (let d = 1; d <= dist; d++) {
-                    const s = SCALES[Math.min(d, SCALES.length - 1)];
-                    const prevS = SCALES[Math.min(d - 1, SCALES.length - 1)];
-                    offsetX += SLIDE_W * (1 - s) / 2 + SLIDE_W * (1 - prevS) / 2;
-                }
-                offsetX *= sign;
+function applyPractitionersTransforms(swiper) {
+    const activeIndex = swiper.activeIndex;
+    swiper.slides.forEach((slide, i) => {
+        const dist = Math.abs(i - activeIndex);
+        const scale = SCALES[Math.min(dist, SCALES.length - 1)];
+        let offsetX = 0;
+        if (dist > 0) {
+            const sign = i > activeIndex ? -1 : 1;
+            for (let d = 1; d <= dist; d++) {
+                const s = SCALES[Math.min(d, SCALES.length - 1)];
+                const prevS = SCALES[Math.min(d - 1, SCALES.length - 1)];
+                offsetX += SLIDE_W * (1 - s) / 2 + SLIDE_W * (1 - prevS) / 2;
             }
-            slide.style.transform = `translateX(${offsetX}px) scale(${scale})`;
-            slide.style.pointerEvents = dist <= 1 ? 'auto' : 'none';
-            slide.style.zIndex = dist === 0 ? 3 : dist === 1 ? 2 : 1;
-        });
-    }
+            offsetX *= sign;
+        }
+        slide.style.transform = `translateX(${offsetX}px) scale(${scale})`;
+        slide.style.pointerEvents = dist <= 1 ? 'auto' : 'none';
+        slide.style.zIndex = dist === 0 ? 3 : dist === 1 ? 2 : 1;
+    });
+}
 
-    const practitionersSwiper = new Swiper('.practitioners__slider', {
+if (document.querySelector('.practitioners__slider')) {
+    practitionersSwiper = new Swiper('.practitioners__slider', {
         slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: GAP,
@@ -101,6 +101,15 @@ if (document.querySelector('.practitioners__slider')) {
 $('.practitioners__filter').on('click', function() {
     $('.practitioners__filter').removeClass('practitioners__filter_active');
     $(this).addClass('practitioners__filter_active');
+
+    const category = $(this).data('category');
+    const slides = document.querySelectorAll('.practitioners__slide');
+    for (let i = 0; i < slides.length; i++) {
+        if (slides[i].dataset.category === category) {
+            practitionersSwiper.slideTo(i);
+            break;
+        }
+    }
 });
 
 // Parallax flower
