@@ -705,11 +705,22 @@ button {
 }
 
 .questions {
+  position: relative;
   padding: 180px clamp(30px, 13vw, 130px) 105px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 70px;
+  overflow: hidden;
+}
+.questions__flower {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: clamp(150px, 40vw, 400px);
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
 }
 .questions__header {
   text-align: center;
@@ -964,6 +975,9 @@ button {
     padding: 100px 30px 60px;
     gap: 40px;
   }
+  .questions__flower {
+    display: none;
+  }
   .questions__title {
     font-size: 44px;
     line-height: 50px;
@@ -1054,6 +1068,257 @@ button {
   }
   .questions__slider .swiper-wrapper {
     align-items: flex-end;
+  }
+}
+.practitioners {
+  position: relative;
+  padding: 200px 0 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  overflow: hidden;
+}
+.practitioners__bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3732px;
+  height: auto;
+  pointer-events: none;
+  z-index: -1;
+}
+.practitioners__header {
+  text-align: center;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 30px;
+}
+.practitioners__title {
+  font-family: "Literatura Present", Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 9vw, 87px);
+  font-weight: 400;
+  line-height: 96px;
+  letter-spacing: -3.48px;
+  color: #4F2340;
+}
+.practitioners__subtitle {
+  font-family: "ABC Social", "Inter", Arial, sans-serif;
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.56px;
+  color: #623B55;
+}
+@media screen and (max-width: 767.98px) {
+  .practitioners__subtitle {
+    letter-spacing: 0;
+  }
+}
+.practitioners__slider {
+  width: 100%;
+  overflow: visible;
+  padding: 20px 0;
+}
+.practitioners__slide {
+  width: 354px !important;
+  height: 525px !important;
+  transition: transform 0.4s ease;
+  pointer-events: none;
+}
+.practitioners__card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.practitioners__card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.practitioners__card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px 40px 50px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: linear-gradient(to bottom, rgba(43, 48, 50, 0) 40%, rgba(43, 48, 50, 0.6) 100%);
+  backdrop-filter: blur(2px);
+}
+.practitioners__card:hover .practitioners__card-overlay {
+  opacity: 1;
+}
+.practitioners__card:hover {
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.1);
+}
+.practitioners__card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.practitioners__card-name-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.practitioners__card-name {
+  font-family: "Literatura Present", Georgia, "Times New Roman", serif;
+  font-size: clamp(40px, 5vw, 67px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -2.68px;
+  color: #FEF9FC;
+}
+.practitioners__card-tag {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 7px;
+  padding: 4px 12px 4px 5px;
+  background: #BFC4FC;
+  border-radius: 3px;
+  font-family: "ABC Social", "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.56px;
+  color: #4F2340;
+}
+.practitioners__card-desc {
+  font-family: "ABC Social", "Inter", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+  color: rgba(254, 249, 252, 0.9);
+}
+.practitioners__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  padding: 0 30px;
+}
+.practitioners__filters {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 10px 0;
+}
+.practitioners__filters-label {
+  font-family: "ABC Social", "Inter", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  color: #4F2340;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.practitioners__filters-line {
+  width: 40px;
+  height: 1px;
+  background: #3B0A2A;
+  flex-shrink: 0;
+}
+.practitioners__filters-list {
+  display: flex;
+  gap: 20px;
+}
+.practitioners__filter {
+  font-family: "ABC Social", "Inter", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: -0.4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 21px 11px 15px;
+  border-radius: 50px;
+  border: 1px solid rgba(111, 63, 72, 0.2);
+  background: none;
+  color: #6F3F48;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 120ms ease-out;
+}
+.practitioners__filter_active {
+  background: #6F3F48;
+  border-color: #6F3F48;
+  color: #FEF9FC;
+}
+
+@media (max-width: 1023.98px) {
+  .practitioners {
+    padding: 140px 0 80px;
+  }
+  .practitioners__filters {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .practitioners__filters-label, .practitioners__filters-line {
+    display: none;
+  }
+}
+@media (max-width: 767.98px) {
+  .practitioners {
+    padding: 100px 0 60px;
+    gap: 30px;
+  }
+  .practitioners__title {
+    font-size: 44px;
+    line-height: 50px;
+    letter-spacing: -1.76px;
+  }
+  .practitioners__slide {
+    width: 280px !important;
+    height: 420px !important;
+  }
+  .practitioners__card-name {
+    font-size: 36px;
+    letter-spacing: -1.44px;
+  }
+  .practitioners__card-overlay {
+    padding: 30px;
+  }
+  .practitioners__filters-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .practitioners__filter {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+}
+@media (max-width: 575.98px) {
+  .practitioners {
+    padding: 80px 0 50px;
+  }
+  .practitioners__title {
+    font-size: 34px;
+    line-height: 40px;
+    letter-spacing: -1.36px;
+  }
+  .practitioners__slide {
+    width: 240px !important;
+    height: 360px !important;
+  }
+  .practitioners__card-name {
+    font-size: 30px;
+  }
+  .practitioners__card-overlay {
+    padding: 20px;
   }
 }
 @font-face {
