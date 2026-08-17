@@ -84,10 +84,11 @@ function applyPractitionersTransforms(swiper) {
 }
 
 if (document.querySelector('.practitioners__slider')) {
+    const gap = window.innerWidth <= 576 ? 20 : GAP;
     practitionersSwiper = new Swiper('.practitioners__slider', {
         slidesPerView: 'auto',
         centeredSlides: true,
-        spaceBetween: GAP,
+        spaceBetween: gap,
         initialSlide: 4,
         slideToClickedSlide: true,
         on: {
@@ -112,15 +113,24 @@ $('.practitioners__filter').on('click', function() {
     }
 });
 
-// Parallax flower
+// Parallax flowers
 const flower = document.querySelector('.questions__flower');
-if (flower) {
-    const section = flower.closest('.questions');
+const flower2 = document.querySelector('.practitioners__flower');
+
+if (flower || flower2) {
     window.addEventListener('scroll', () => {
-        const rect = section.getBoundingClientRect();
-        const sectionCenter = rect.top + rect.height / 2;
         const viewCenter = window.innerHeight / 2;
-        const offset = (sectionCenter - viewCenter) * -0.15;
-        flower.style.transform = `translateY(${offset}px)`;
+
+        if (flower) {
+            const rect = flower.closest('.questions').getBoundingClientRect();
+            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.15;
+            flower.style.transform = `translateY(${offset}px)`;
+        }
+
+        if (flower2) {
+            const rect = flower2.closest('.practitioners').getBoundingClientRect();
+            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.15;
+            flower2.style.transform = `translateY(${offset}px)`;
+        }
     });
 }

@@ -5,17 +5,44 @@
     flex-direction: column;
     align-items: center;
     gap: 40px;
-    overflow: hidden;
+    // overflow: hidden;
 
     &__bg {
         position: absolute;
-        top: 0;
+        top: 50%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%) translateY(-50%);
         width: 3732px;
         height: auto;
         pointer-events: none;
         z-index: -1;
+
+        &_mobile {
+            display: none;
+        }
+
+        @media (max-width: $breakpoint768) {
+            width: 2700px;
+        }
+
+        @media (max-width: $breakpoint576) {
+            width: 1155px;
+            top: 40%;
+        }
+    }
+
+    &__flower {
+        position: absolute;
+        right: 0;
+        bottom: -100px;
+        width: clamp(150px, 25vw, 350px);
+        height: auto;
+        pointer-events: none;
+        z-index: 1;
+
+        @media screen and (max-width: $breakpoint576) {
+            display: none;
+        }
     }
 
     &__header {
@@ -86,9 +113,6 @@
         opacity: 1;
     }
 
-    &__card:hover {
-        box-shadow: 0 50px 50px rgba(0, 0, 0, 0.1);
-    }
 
     &__card-info {
         display: flex;
@@ -250,6 +274,18 @@
     .practitioners {
         padding: 80px 0 50px;
 
+        &__bg_desktop {
+            display: none;
+        }
+
+        &__bg_mobile {
+            display: block;
+        }
+
+        &__header {
+            gap: 20px;
+        }
+
         &__title {
             font-size: 34px;
             line-height: 40px;
@@ -267,6 +303,10 @@
 
         &__card-overlay {
             padding: 20px;
+        }
+
+        &__filters {
+            display: none;
         }
     }
 }
