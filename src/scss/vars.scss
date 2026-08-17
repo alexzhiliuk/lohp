@@ -1,0 +1,64 @@
+// Container
+$conteinerWidth: 1400 + px;
+$containerPadding: 10 + px;
+
+// Breakpoints
+$breakpoint1440: 1439.98 + px;
+$breakpoint1400: 1399.98 + px;
+$breakpoint1200: 1199.98 + px;
+$breakpoint1024: 1023.98 + px;
+$breakpoint992: 991.98 + px;
+$breakpoint768: 767.98 + px;
+$breakpoint576: 575.98 + px;
+$breakpoint480: 479.98 + px;
+
+// Colors — Primary
+$colorPinkWhite: #FEF9FC;
+$colorVibrantLilac: #F8DDFF;
+$colorLavender: #C4A0CD;
+$colorBerryPink: #A43F66;
+$colorMysticLilac: #DDD8EB;
+$colorDeepPurple: #3B0A2A;
+$colorMulberryBrown: #6F3F48;
+
+// Colors — Tertiary
+$colorDeepPurple80: #4F2340;
+$colorDeepPurple70: #623B55;
+$colorWarmBlack80: #39352D;
+$colorWarmBlack70: #524E47;
+$colorWarmBlack60: #6B6761;
+
+// Colors — Secondary
+$colorDawn: #FFEDAA;
+
+// Colors — Semantic
+$colorWhite: #FFFFFF;
+$colorBlack: #000000;
+$colorTextPrimary: #121212;
+$colorCardBack: #BFC4FC;
+$colorOnline: #3BBAAD;
+
+// Fonts
+$fontHeading: "Literatura Present", Georgia, "Times New Roman", serif;
+$fontBody: "ABC Social", "Inter", Arial, sans-serif;
+
+// Spacing
+$spacing-xs: 10px;
+$spacing-sm: 20px;
+$spacing-md: 30px;
+$spacing-lg: 40px;
+$spacing-xl: 60px;
+$spacing-2xl: 80px;
+$spacing-3xl: 100px;
+$spacing-4xl: 120px;
+$spacing-5xl: 130px;
+
+// Layers
+$headerLayer: 9;
+$popupLayer: 10;
+
+// Burger
+$burgerBreakpoint: $breakpoint1024;
+
+// Transitions
+$quickTransition: all 120ms ease-out;

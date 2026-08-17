@@ -1,0 +1,191 @@
+@use "sass:math";
+
+@mixin flexColumns($count, $gap) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap;
+
+    & > * {
+        flex: 0 0 calc(100% / $count - $gap * ($count - 1) / $count);
+    }
+}
+
+@mixin flexColumnsWithMaxWidth($count, $gap) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap;
+
+    & > * {
+        flex: 0 0 calc(100% / $count - $gap * ($count - 1) / $count);
+        max-width: calc(100% / $count - $gap * ($count - 1) / $count);
+    }
+}
+
+@mixin clamp($property, $min, $max, $dynamic: null) {
+    @if $dynamic == null {
+        $dynamic: math.div($max, 10);
+    }
+    #{$property}: clamp(#{$min}px, #{$dynamic}vw, #{$max}px);
+}
+
+@mixin textOverflow($lines: 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+}
+
+@mixin width100vw {
+    width: 100vw;
+    margin-left: calc(-1 * (100vw - 100%) / 2);
+    margin-right: calc(-1 * (100vw - 100%) / 2);
+}
+
+@mixin backgroundCenterContain($url) {
+    background: url($url) center / contain no-repeat;
+}
+
+@mixin customScrollbar($size, $track, $thumb) {
+    &::-webkit-scrollbar {
+        width: $size;
+        height: $size; /* для горизонтального скроллбара */
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $track;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $thumb;
+        border-radius: calc($size / 2);
+        min-height: 20px; /* минимальная высота (чтобы был заметен даже при малом контенте) */
+    }
+}
+
+@mixin hideScrollbar {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    scrollbar-width: none;
+}
+
+@mixin clamp($width) {
+    @if $dynamic == null {
+        $dynamic: math.div($max, 10);
+    }
+    #{$property}: clamp(#{$min}px, #{$dynamic}vw, #{$max}px);
+    @media screen and (max-width: $breakpoint992) {
+        flex: unset;
+    }
+}
+
+@mixin flexUntil($grow, $shrink, $basis, $width) {
+    flex: #{$grow} #{$shrink} $basis;
+
+    @media screen and (max-width: $width) {
+        flex: unset;
+    }
+}
+
+@mixin svgColor {
+    *[fill] {
+        fill: $colorDeepPurple80;
+    }
+    *[stroke] {
+        stroke: $colorDeepPurple80;
+    }
+}
+
+@mixin imgCover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@mixin circle {
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+// Typography
+@mixin h1 {
+    font-family: $fontHeading;
+    font-size: clamp(54px, 13vw, 128px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -5.12px;
+
+    @media screen and (max-width: $breakpoint768) {
+        letter-spacing: 0;
+    }
+}
+
+@mixin h2 {
+    font-family: $fontHeading;
+    font-size: 87px;
+    font-weight: 400;
+    line-height: 96px;
+    letter-spacing: -3.48px;
+}
+
+@mixin h3 {
+    font-family: $fontHeading;
+    font-size: 67px;
+    font-weight: 400;
+    line-height: 77px;
+    letter-spacing: -2.68px;
+}
+
+@mixin h4 {
+    font-family: $fontHeading;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: -0.68px;
+}
+
+@mixin subtitle {
+    font-family: $fontBody;
+    font-size: clamp(18px, 3vw, 28px);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.56px;
+
+    @media screen and (max-width: $breakpoint768) {
+        letter-spacing: 0;
+    }
+}
+
+@mixin body-text {
+    font-family: $fontBody;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.48px;
+}
+
+@mixin body-text-2 {
+    font-family: $fontBody;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.4px;
+}
+
+@mixin caption {
+    font-family: $fontBody;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0;
+}
+
+@mixin caption-2 {
+    font-family: $fontBody;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0;
+}

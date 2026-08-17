@@ -1,0 +1,28 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 500px;
+    font-family: $fontBody;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background: none;
+
+    &--primary {
+        background: $colorDeepPurple80;
+        color: $colorWhite;
+        padding: 22px 60px;
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+    &--outline {
+        border: 1px solid $colorDeepPurple80;
+        color: $colorDeepPurple80;
+        padding: 12px 24px;
+        font-size: 18px;
+        background: transparent;
+    }
+}

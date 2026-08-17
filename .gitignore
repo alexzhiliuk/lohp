@@ -1,0 +1,4 @@
+node_modules/
+gulp/version.json
+.DS_Store
+.vscode

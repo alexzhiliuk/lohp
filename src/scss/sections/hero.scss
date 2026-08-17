@@ -1,0 +1,96 @@
+@keyframes scroll-dot {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(12px); }
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 615px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: $breakpoint576) {
+        height: auto;
+        padding-bottom: 100px;
+        padding-top: 250px;
+    }
+    &__bg {
+        position: absolute;
+        inset: 0;
+        bottom: 75px;
+        background: $colorVibrantLilac;
+        overflow: hidden;
+        -webkit-mask-image: url('../img/hero_mask.svg');
+        -webkit-mask-size: 3732px 1606px;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center bottom;
+        mask-image: url('../img/hero_mask.svg');
+        mask-size: 3732px 1606px;
+        mask-repeat: no-repeat;
+        mask-position: center bottom;
+
+        @media screen and (max-width: $breakpoint576) {
+            -webkit-mask-image: url('../img/hero_mask_mb.svg');
+            -webkit-mask-size: 1155px 1037px;
+            mask-image: url('../img/hero_mask_mb.svg');
+            mask-size: 1155px 1037px;
+            bottom: 0;
+        }
+    }
+
+    &__bg-img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+
+        @media screen and (max-width: $breakpoint576) {
+            top: 130px;
+            width: 140%;
+            height: 80%;
+        }
+    }
+
+    &__content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 1147px;
+        padding: 0 clamp(30px, 5vw, 50px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp($spacing-sm, 3vw, $spacing-md);
+    }
+
+    &__title {
+        @include h1;
+        color: $colorDeepPurple80;
+    }
+
+    &__subtitle {
+        @include subtitle;
+        color: $colorDeepPurple70;
+        opacity: 0.7;
+    }
+
+    &__scroll {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+
+        @media screen and (max-width: $breakpoint576) {
+            display: none;
+        }
+    }
+
+    &__scroll-dot {
+        animation: scroll-dot 2s ease-in-out infinite;
+    }
+}
