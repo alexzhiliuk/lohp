@@ -7,7 +7,7 @@
 
     &__header {
         text-align: center;
-        max-width: 640px;
+        max-width: 860px;
         display: flex;
         flex-direction: column;
         gap: $spacing-sm;
@@ -31,7 +31,7 @@
         color: $colorWarmBlack70;
     }
 
-    // Cards fan
+    // Desktop fan
     &__cards {
         position: relative;
         display: flex;
@@ -41,9 +41,9 @@
         width: 100%;
         max-width: 980px;
         perspective: 1000px;
+        margin-top: clamp(20px, 6vw, 60px);
     }
 
-    // Card wrapper
     &__card {
         position: absolute;
         transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -128,7 +128,6 @@
         }
     }
 
-    // Spread positions (applied via JS)
     &__cards_spread {
         .questions__card {
             &:nth-child(1) { transform: rotate(-20deg) translateX(-360px) translateY(-150px); }
@@ -139,7 +138,64 @@
         }
     }
 
-    // Inner flip container
+    // Mobile slider (hidden on desktop)
+    &__slider {
+        padding: 50px 0 !important;
+        margin: -50px 0;
+
+        @media screen and (min-width: $breakpoint576) {
+            display: none !important;
+        }
+    }
+
+    &__slide {
+        width: 200px !important;
+        height: 266px !important;
+        transform: rotate(20deg) scale(0.85) translateY(25px);
+        transition: transform 0.3s ease;
+        z-index: 1;
+
+        &.swiper-slide-active {
+            transform: rotate(0deg) scale(1) translateY(0) !important;
+            z-index: 5;
+        }
+
+        &.swiper-slide-prev {
+            transform: rotate(-10deg) scale(0.9) translateY(15px) !important;
+            z-index: 3;
+        }
+
+        &.swiper-slide-next {
+            transform: rotate(10deg) scale(0.9) translateY(15px) !important;
+            z-index: 3;
+        }
+
+        .questions__card-front,
+        .questions__card-back {
+            border-radius: 16px;
+        }
+
+        .questions__card-name {
+            font-size: 28px;
+        }
+
+        .questions__card-back-title {
+            font-size: 20px;
+        }
+
+        .questions__card-back-text {
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        &:hover {
+            .questions__card-inner {
+                transform: rotateY(180deg) scale(1.05);
+            }
+        }
+    }
+
+    // Shared card inner styles
     &__card-inner {
         width: 100%;
         height: 100%;
@@ -148,7 +204,6 @@
         transition: transform 0.6s ease;
     }
 
-    // Front & Back shared
     &__card-front,
     &__card-back {
         position: absolute;
@@ -158,7 +213,6 @@
         overflow: hidden;
     }
 
-    // Front
     &__card-front {
         display: flex;
         flex-direction: column;
@@ -189,7 +243,6 @@
         line-height: normal;
     }
 
-    // Back
     &__card-back {
         transform: rotateY(180deg);
         background: $colorCardBack;
@@ -288,6 +341,36 @@
             width: 350px;
             height: 120px;
             bottom: -30px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint576) {
+    .questions {
+        padding: 80px 0 60px;
+
+        &__header {
+            padding: 0 $spacing-md;
+        }
+
+        &__title {
+            font-size: 34px;
+            line-height: 40px;
+            letter-spacing: -1.36px;
+        }
+
+        &__cards {
+            display: none;
+        }
+
+        &__slider {
+            display: block;
+            width: 100%;
+            overflow: visible;
+
+            .swiper-wrapper {
+                align-items: flex-end;
+            }
         }
     }
 }

@@ -713,7 +713,7 @@ button {
 }
 .questions__header {
   text-align: center;
-  max-width: 640px;
+  max-width: 860px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -755,6 +755,7 @@ button {
   width: 100%;
   max-width: 980px;
   perspective: 1000px;
+  margin-top: clamp(20px, 6vw, 60px);
 }
 .questions__card {
   position: absolute;
@@ -837,6 +838,51 @@ button {
 }
 .questions__cards_spread .questions__card:nth-child(5) {
   transform: rotate(20deg) translateX(360px) translateY(-150px);
+}
+.questions__slider {
+  padding: 50px 0 !important;
+  margin: -50px 0;
+}
+@media screen and (min-width: 575.98px) {
+  .questions__slider {
+    display: none !important;
+  }
+}
+.questions__slide {
+  width: 200px !important;
+  height: 266px !important;
+  transform: rotate(20deg) scale(0.85) translateY(25px);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+.questions__slide.swiper-slide-active {
+  transform: rotate(0deg) scale(1) translateY(0) !important;
+  z-index: 5;
+}
+.questions__slide.swiper-slide-prev {
+  transform: rotate(-10deg) scale(0.9) translateY(15px) !important;
+  z-index: 3;
+}
+.questions__slide.swiper-slide-next {
+  transform: rotate(10deg) scale(0.9) translateY(15px) !important;
+  z-index: 3;
+}
+.questions__slide .questions__card-front,
+.questions__slide .questions__card-back {
+  border-radius: 16px;
+}
+.questions__slide .questions__card-name {
+  font-size: 28px;
+}
+.questions__slide .questions__card-back-title {
+  font-size: 20px;
+}
+.questions__slide .questions__card-back-text {
+  font-size: 13px;
+  line-height: 1.4;
+}
+.questions__slide:hover .questions__card-inner {
+  transform: rotateY(180deg) scale(1.05);
 }
 .questions__card-inner {
   width: 100%;
@@ -984,6 +1030,30 @@ button {
     width: 350px;
     height: 120px;
     bottom: -30px;
+  }
+}
+@media (max-width: 575.98px) {
+  .questions {
+    padding: 80px 0 60px;
+  }
+  .questions__header {
+    padding: 0 30px;
+  }
+  .questions__title {
+    font-size: 34px;
+    line-height: 40px;
+    letter-spacing: -1.36px;
+  }
+  .questions__cards {
+    display: none;
+  }
+  .questions__slider {
+    display: block;
+    width: 100%;
+    overflow: visible;
+  }
+  .questions__slider .swiper-wrapper {
+    align-items: flex-end;
   }
 }
 @font-face {
