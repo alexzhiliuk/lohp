@@ -448,34 +448,44 @@ button {
   justify-content: space-between;
 }
 .header__blur {
-  display: none;
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  z-index: 0;
+  rotate: 180deg;
 }
 .header__blur:nth-child(1) {
-  -webkit-backdrop-filter: blur(50px);
-  backdrop-filter: blur(50px);
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 20%, transparent 45%);
-  mask-image: linear-gradient(to bottom, black 0%, black 20%, transparent 45%);
+  backdrop-filter: blur(1px);
+  mask: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 10%, rgb(0, 0, 0) 30%, rgba(0, 0, 0, 0) 40%);
 }
 .header__blur:nth-child(2) {
-  -webkit-backdrop-filter: blur(25px);
-  backdrop-filter: blur(25px);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 15%, black 35%, black 55%, transparent 75%);
-  mask-image: linear-gradient(to bottom, transparent 15%, black 35%, black 55%, transparent 75%);
+  backdrop-filter: blur(2px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 10%, rgb(0, 0, 0) 20%, rgb(0, 0, 0) 40%, rgba(0, 0, 0, 0) 50%);
 }
 .header__blur:nth-child(3) {
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 50%, black 75%, black 90%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 50%, black 75%, black 90%, transparent 100%);
+  backdrop-filter: blur(4px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 15%, rgb(0, 0, 0) 30%, rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0) 60%);
 }
-.header_scrolled .header__blur {
-  opacity: 1;
+.header__blur:nth-child(4) {
+  backdrop-filter: blur(8px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 20%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0) 70%);
+}
+.header__blur:nth-child(5) {
+  backdrop-filter: blur(16px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 40%, rgb(0, 0, 0) 60%, rgb(0, 0, 0) 80%, rgba(0, 0, 0, 0) 90%);
+}
+.header__blur:nth-child(6) {
+  backdrop-filter: blur(32px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 60%, rgb(0, 0, 0) 80%);
+}
+.header__blur:nth-child(7) {
+  z-index: 10;
+  backdrop-filter: blur(64px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%);
+}
+.header__nav, .header__logo, .header__actions {
+  position: relative;
+  z-index: 1;
 }
 .header__burger {
   display: none;
@@ -1193,18 +1203,61 @@ button {
   flex-direction: column;
   justify-content: flex-end;
   padding: 40px 40px 50px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  background: linear-gradient(to bottom, rgba(43, 48, 50, 0) 40%, rgba(43, 48, 50, 0.6) 100%);
-  backdrop-filter: blur(2px);
+  pointer-events: none;
 }
 .practitioners__card:hover .practitioners__card-overlay {
+  pointer-events: auto;
+}
+.practitioners__card-blur {
+  position: absolute;
+  inset: 0;
+  top: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.practitioners__card-blur:nth-child(1) {
+  backdrop-filter: blur(1px);
+  mask: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 10%, rgb(0, 0, 0) 30%, rgba(0, 0, 0, 0) 40%);
+}
+.practitioners__card-blur:nth-child(2) {
+  backdrop-filter: blur(2px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 10%, rgb(0, 0, 0) 20%, rgb(0, 0, 0) 40%, rgba(0, 0, 0, 0) 50%);
+}
+.practitioners__card-blur:nth-child(3) {
+  backdrop-filter: blur(4px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 15%, rgb(0, 0, 0) 30%, rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0) 60%);
+}
+.practitioners__card-blur:nth-child(4) {
+  backdrop-filter: blur(8px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 20%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0) 70%);
+}
+.practitioners__card-blur:nth-child(5) {
+  backdrop-filter: blur(16px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 40%, rgb(0, 0, 0) 60%, rgb(0, 0, 0) 80%, rgba(0, 0, 0, 0) 90%);
+}
+.practitioners__card-blur:nth-child(6) {
+  backdrop-filter: blur(32px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 60%, rgb(0, 0, 0) 80%);
+}
+.practitioners__card-blur:nth-child(7) {
+  backdrop-filter: blur(64px);
+  mask: linear-gradient(rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%);
+}
+.practitioners__card:hover .practitioners__card-blur {
   opacity: 1;
 }
 .practitioners__card-info {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.practitioners__card:hover .practitioners__card-info {
+  opacity: 1;
 }
 .practitioners__card-name-wrap {
   display: flex;
