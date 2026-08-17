@@ -124,7 +124,7 @@
 
 @mixin h2 {
     font-family: $fontHeading;
-    font-size: 87px;
+    font-size: clamp(34px, 9vw, 87px);
     font-weight: 400;
     line-height: 96px;
     letter-spacing: -3.48px;

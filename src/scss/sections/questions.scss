@@ -1,0 +1,293 @@
+.questions {
+    padding: 180px clamp($spacing-md, 13vw, $spacing-5xl) 105px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 70px;
+
+    &__header {
+        text-align: center;
+        max-width: 640px;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-sm;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    &__header_visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    &__title {
+        @include h2;
+        color: $colorDeepPurple80;
+    }
+
+    &__subtitle {
+        @include subtitle;
+        color: $colorWarmBlack70;
+    }
+
+    // Cards fan
+    &__cards {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        height: 310px;
+        width: 100%;
+        max-width: 980px;
+        perspective: 1000px;
+    }
+
+    // Card wrapper
+    &__card {
+        position: absolute;
+        transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform: rotate(0deg) translateX(0) translateY(20px);
+        z-index: 1;
+
+        &:hover {
+            z-index: 5;
+            .questions__card-inner {
+                transform: rotateY(180deg) scale(1.05);
+            }
+        }
+
+        &_size_sm {
+            width: 162px;
+            height: 216px;
+
+            .questions__card-front,
+            .questions__card-back {
+                border-radius: 14px;
+            }
+
+            .questions__card-name {
+                font-size: 24px;
+            }
+
+            .questions__card-back-title {
+                font-size: 20px;
+            }
+
+            .questions__card-back-text {
+                font-size: 13px;
+                line-height: 1.4;
+            }
+        }
+
+        &_size_md {
+            width: 209px;
+            height: 278px;
+
+            .questions__card-front,
+            .questions__card-back {
+                border-radius: 18px;
+            }
+
+            .questions__card-name {
+                font-size: 32px;
+            }
+
+            .questions__card-back-title {
+                font-size: 24px;
+            }
+
+            .questions__card-back-text {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+        }
+
+        &_size_lg {
+            width: 232px;
+            height: 310px;
+            z-index: 2;
+
+            .questions__card-front,
+            .questions__card-back {
+                border-radius: 18px;
+            }
+
+            .questions__card-name {
+                font-size: 48px;
+            }
+
+            .questions__card-back-title {
+                font-size: 28px;
+            }
+
+            .questions__card-back-text {
+                font-size: 15px;
+                line-height: 1.5;
+            }
+        }
+    }
+
+    // Spread positions (applied via JS)
+    &__cards_spread {
+        .questions__card {
+            &:nth-child(1) { transform: rotate(-20deg) translateX(-360px) translateY(-150px); }
+            &:nth-child(2) { transform: rotate(-10deg) translateX(-200px) translateY(-90px); }
+            &:nth-child(3) { transform: rotate(0deg) translateX(0) translateY(-80px); }
+            &:nth-child(4) { transform: rotate(10deg) translateX(200px) translateY(-90px); }
+            &:nth-child(5) { transform: rotate(20deg) translateX(360px) translateY(-150px); }
+        }
+    }
+
+    // Inner flip container
+    &__card-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.6s ease;
+    }
+
+    // Front & Back shared
+    &__card-front,
+    &__card-back {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        overflow: hidden;
+    }
+
+    // Front
+    &__card-front {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 14px 7px;
+    }
+
+    &__card-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__card-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 47.58%, rgba(0, 0, 0, 0.5) 95.16%);
+    }
+
+    &__card-name {
+        position: relative;
+        font-family: $fontHeading;
+        font-weight: 400;
+        color: $colorWhite;
+        line-height: normal;
+    }
+
+    // Back
+    &__card-back {
+        transform: rotateY(180deg);
+        background: $colorCardBack;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 16px;
+        text-align: center;
+        gap: 10px;
+    }
+
+    &__card-back-title {
+        font-family: $fontHeading;
+        font-weight: 400;
+        color: $colorDeepPurple80;
+    }
+
+    &__card-back-text {
+        font-family: $fontBody;
+        font-weight: 400;
+        color: $colorDeepPurple80;
+    }
+
+    // Glow behind cards
+    &__cards::after {
+        content: '';
+        position: absolute;
+        bottom: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 200px;
+        background: radial-gradient(ellipse, rgba($colorVibrantLilac, 0.5) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+        filter: blur(40px);
+    }
+}
+
+@media (max-width: $breakpoint768) {
+    .questions {
+        padding: 100px $spacing-md 60px;
+        gap: 40px;
+
+        &__title {
+            font-size: 44px;
+            line-height: 50px;
+            letter-spacing: -1.76px;
+        }
+
+        &__cards {
+            height: 220px;
+        }
+
+        &__card {
+            &_size_sm {
+                width: 100px;
+                height: 133px;
+
+                .questions__card-name { font-size: 14px; }
+                .questions__card-back-title { font-size: 14px; }
+                .questions__card-back-text { font-size: 10px; }
+            }
+
+            &_size_md {
+                width: 130px;
+                height: 173px;
+
+                .questions__card-name { font-size: 18px; }
+                .questions__card-back-title { font-size: 16px; }
+                .questions__card-back-text { font-size: 11px; }
+            }
+
+            &_size_lg {
+                width: 144px;
+                height: 192px;
+
+                .questions__card-name { font-size: 26px; }
+                .questions__card-back-title { font-size: 18px; }
+                .questions__card-back-text { font-size: 12px; }
+            }
+        }
+
+        &__cards_spread {
+            .questions__card {
+                &:nth-child(1) { transform: rotate(-20deg) translateX(-125px); }
+                &:nth-child(2) { transform: rotate(-10deg) translateX(-70px) translateY(-22px); }
+                &:nth-child(3) { transform: rotate(0deg) translateX(0) translateY(-28px); }
+                &:nth-child(4) { transform: rotate(10deg) translateX(70px) translateY(-22px); }
+                &:nth-child(5) { transform: rotate(20deg) translateX(125px); }
+            }
+        }
+
+        &__cards::after {
+            width: 350px;
+            height: 120px;
+            bottom: -30px;
+        }
+    }
+}
