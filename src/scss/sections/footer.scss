@@ -1,0 +1,172 @@
+.footer {
+    background: $colorMysticLilac;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 130px 30px;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 120px;
+        max-width: 1660px;
+        width: 100%;
+    }
+
+    &__row {
+        display: flex;
+        gap: clamp(50px, 15vw, 250px);
+    }
+
+    &__brand {
+        width: 486px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    &__logo {
+        width: 190px;
+        height: auto;
+    }
+
+    &__description {
+        @include body-text-2;
+        color: $colorWarmBlack70;
+    }
+
+    &__nav {
+        flex: 1;
+        display: flex;
+        gap: 127px;
+    }
+
+    &__nav-group {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    &__nav-title {
+        @include caption;
+        color: $colorBerryPink;
+    }
+
+    &__nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__nav-link {
+        @include body-text-2;
+        color: $colorDeepPurple80;
+    }
+
+    &__app-title {
+        @include h4;
+        color: $colorDeepPurple80;
+    }
+
+    &__badges {
+        display: flex;
+        gap: 12px;
+    }
+
+    &__badge {
+        height: 56px;
+        width: auto;
+    }
+
+    &__bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    &__divider {
+        height: 0.5px;
+        background: $colorDeepPurple80;
+        width: 100%;
+    }
+
+    &__bottom-row {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+    }
+
+    &__copyright {
+        flex: 1;
+        @include body-text-2;
+        color: $colorWarmBlack70;
+    }
+
+    &__socials {
+        display: flex;
+        gap: 20px;
+        flex-shrink: 0;
+    }
+
+    &__social {
+        width: 30px;
+        height: 30px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+@media (max-width: 1300px) {
+    .footer {
+        padding: 80px 40px 30px;
+
+        &__inner {
+            gap: 60px;
+        }
+
+        &__row {
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        &__brand {
+            width: 100%;
+        }
+
+        &__logo {
+            width: 114px;
+        }
+
+        &__nav {
+            gap: 60px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint768) {
+    .footer {
+        padding: 80px 20px 30px;
+
+        &__nav {
+            flex-direction: column;
+        }
+    }
+}
+
+@media (max-width: $breakpoint576) {
+    .footer {
+        &__bottom-row {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        &__social--youtube {
+            display: none;
+        }
+    }
+}

@@ -25,6 +25,12 @@
             bottom: -50px;
         }
 
+        @media (max-width: $breakpoint768) {
+            &_desktop {
+                width: 2700px;
+            }
+        }
+
         @media (max-width: $breakpoint576) {
             &_desktop {
                 display: none;
