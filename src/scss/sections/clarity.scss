@@ -14,7 +14,7 @@
         width: clamp(150px, 25vw, 350px);
         height: auto;
         pointer-events: none;
-        z-index: 0;
+        z-index: 1;
         will-change: transform;
 
         @media screen and (max-width: $breakpoint576) {

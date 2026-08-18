@@ -6,6 +6,7 @@
 
 import '../libs/header/scroll.js';
 import Swiper from 'swiper';
+import { Pagination } from 'swiper/modules';
 
 $('.header__burger').on('click', function() {
     $('.header').toggleClass('header_open');
@@ -170,6 +171,21 @@ $('.practitioners__filter').on('click', function() {
         }
     }
 });
+
+// Testimonials slider
+if (document.querySelector('.testimonials__slider')) {
+    new Swiper('.testimonials__slider', {
+        modules: [Pagination],
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        spaceBetween: 40,
+        loop: true,
+        pagination: {
+            el: '.testimonials__pagination',
+            clickable: true,
+        },
+    });
+}
 
 // Parallax flowers
 const flower = document.querySelector('.questions__flower');

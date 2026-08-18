@@ -1,0 +1,190 @@
+.testimonials {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    padding: 120px clamp($spacing-md, 13vw, $spacing-5xl);
+    background: $colorDeepPurple;
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+
+    &__slider {
+        position: relative;
+        width: 100%;
+        overflow: visible !important;
+        z-index: 1;
+    }
+
+    &__slide {
+        display: flex;
+        flex-direction: column;
+        gap: 45px;
+        width: 960px !important;
+        max-width: 100%;
+    }
+
+    &__slide-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 45px;
+        opacity: 0.8;
+        transform: scale(0.5);
+        transform-origin: center center;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+
+        .swiper-slide-active & {
+            opacity: 1;
+            transform: scale(1);
+            align-items: flex-start;
+        }
+    }
+
+    &__icon {
+        width: 68px;
+        height: 68px;
+        margin-right: auto;
+    }
+
+    &__quote {
+        @include h3;
+        color: $colorPinkWhite;
+    }
+
+    &__author {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__avatar {
+        width: 77px;
+        height: 77px;
+        border-radius: 8px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    &__author-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    &__name {
+        font-family: $fontBody;
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 40px;
+        letter-spacing: -0.56px;
+        color: $colorWhite;
+    }
+
+    &__role {
+        @include body-text-2;
+        color: $colorMysticLilac;
+        opacity: 0.7;
+    }
+
+    &__pagination {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+
+        .swiper-pagination-bullet {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: $colorLavender;
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 23px;
+            border-radius: 3.5px;
+            background: $colorDawn;
+        }
+    }
+}
+
+@media (max-width: $breakpoint768) {
+    .testimonials {
+        padding: 80px $spacing-md;
+        gap: 60px;
+
+        &__icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        &__slide {
+            width: 100% !important;
+            gap: 30px;
+        }
+
+        &__quote {
+            font-size: 40px;
+            line-height: 48px;
+            letter-spacing: -1.6px;
+        }
+
+        &__avatar {
+            width: 60px;
+            height: 60px;
+        }
+
+        &__name {
+            font-size: 24px;
+            line-height: 30px;
+        }
+
+        &__role {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint576) {
+    .testimonials {
+        padding: 60px $spacing-md;
+        gap: 40px;
+
+        &__icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        &__quote {
+            font-size: 30px;
+            line-height: 38px;
+            letter-spacing: -1.2px;
+        }
+
+        &__avatar {
+            width: 50px;
+            height: 50px;
+        }
+
+        &__name {
+            font-size: 20px;
+            line-height: 26px;
+        }
+
+        &__role {
+            font-size: 14px;
+        }
+    }
+}
