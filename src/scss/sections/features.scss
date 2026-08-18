@@ -1,0 +1,258 @@
+.features {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 57px;
+    padding: 120px clamp($spacing-md, 13vw, $spacing-5xl);
+
+    &__bg-full {
+        position: absolute;
+        bottom: -100px;
+        width: 3732px;
+        height: auto;
+        pointer-events: none;
+        z-index: 0;
+
+        &_mobile {
+            display: none;
+            bottom: -50px;
+        }
+
+        @media (max-width: $breakpoint576) {
+            &_desktop {
+                display: none;
+            }
+
+            &_mobile {
+                display: block;
+                width: 1155px;
+            }
+        }
+    }
+
+    &__bg {
+        position: absolute;
+        left: -252px;
+        top: -224px;
+        width: 1012px;
+        height: auto;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    &__slider {
+        position: relative;
+        width: 100%;
+        overflow: visible !important;
+        z-index: 1;
+    }
+
+    &__slide {
+        display: flex !important;
+        align-items: center;
+        gap: 80px;
+        width: 100% !important;
+    }
+
+    &__card {
+        flex-shrink: 0;
+        width: 265px;
+        height: 330px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 80px 30px 40px;
+        border-radius: 30px;
+        background: linear-gradient(to bottom, #fef8ff, $colorVibrantLilac);
+        box-shadow: 0 25px 25px #f1d0f9;
+
+        .swiper-slide-next & {
+            animation: wobble 2s ease-in-out infinite;
+        }
+    }
+
+    &__card-icon {
+        width: 90px;
+        height: 90px;
+    }
+
+    &__card-name {
+        @include subtitle;
+        color: $colorDeepPurple80;
+        text-align: center;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        max-width: 913px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+
+        .swiper-slide-active & {
+            opacity: 1;
+        }
+    }
+
+    &__title {
+        @include h2;
+        color: $colorDeepPurple80;
+    }
+
+    &__subtitle {
+        @include subtitle;
+        color: $colorDeepPurple80;
+    }
+
+    &__pagination {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+
+        .swiper-pagination-bullet {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: $colorLavender;
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 23px;
+            border-radius: 3.5px;
+            background: $colorDeepPurple80;
+        }
+    }
+}
+
+@keyframes wobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+@media (max-width: $breakpoint992) {
+    .features {
+        &__slide {
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+
+        &__text {
+            display: contents;
+        }
+
+        &__title {
+            order: 1;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+
+            .swiper-slide-active & {
+                opacity: 1;
+            }
+        }
+
+        &__card {
+            order: 2;
+
+            .swiper-slide-next & {
+                translate: -70%;
+            }
+        }
+
+        &__subtitle {
+            order: 3;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+
+            .swiper-slide-active & {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint768) {
+    .features {
+        padding: 80px $spacing-md;
+        gap: 40px;
+
+        &__bg {
+            width: 600px;
+            left: -150px;
+            top: -100px;
+        }
+
+        &__slide {
+            width: 100% !important;
+        }
+
+        &__card {
+            width: 200px;
+            height: 250px;
+            padding: 50px 20px 30px;
+        }
+
+        &__card-icon {
+            width: 70px;
+            height: 70px;
+        }
+
+        &__title {
+            font-size: 44px;
+            line-height: 50px;
+            letter-spacing: -1.76px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint576) {
+    .features {
+        padding: 60px $spacing-md;
+
+        &__bg {
+            width: 400px;
+            left: -100px;
+            top: -80px;
+        }
+
+        &__card {
+            width: 180px;
+            height: 220px;
+            padding: 40px 20px 25px;
+
+            .swiper-slide-next & {
+                translate: -46vw;
+                scale: 0.8;
+            }
+        }
+
+        &__card-icon {
+            width: 60px;
+            height: 60px;
+        }
+
+        &__card-name {
+            font-size: 20px;
+        }
+
+        &__title {
+            font-size: 34px;
+            line-height: 40px;
+            letter-spacing: -1.36px;
+        }
+
+        &__subtitle {
+            font-size: 20px;
+        }
+    }
+}

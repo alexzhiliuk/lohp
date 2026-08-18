@@ -187,6 +187,19 @@ if (document.querySelector('.testimonials__slider')) {
     });
 }
 
+// Features slider
+if (document.querySelector('.features__slider')) {
+    new Swiper('.features__slider', {
+        modules: [Pagination],
+        slidesPerView: 1,
+        spaceBetween: 80,
+        pagination: {
+            el: '.features__pagination',
+            clickable: true,
+        },
+    });
+}
+
 // Parallax flowers
 const flower = document.querySelector('.questions__flower');
 const flower2 = document.querySelector('.practitioners__flower');
