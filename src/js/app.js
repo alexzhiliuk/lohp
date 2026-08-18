@@ -57,44 +57,67 @@ if (questionsSection) {
 }
 
 // Practitioners slider
-const GAP = 50;
+const VISUAL_GAP = 10;
 const SCALES = [1, 0.85, 0.73, 0.63, 0.55];
 const SLIDE_W = 354;
 let practitionersSwiper = null;
 
+function getScaleForProgress(p) {
+    const abs = Math.min(Math.abs(p), SCALES.length - 1);
+    const low = Math.floor(abs);
+    const high = Math.ceil(abs);
+    if (low === high) return SCALES[low];
+    const t = abs - low;
+    return SCALES[low] + (SCALES[high] - SCALES[low]) * t;
+}
+
 function applyPractitionersTransforms(swiper) {
-    const activeIndex = swiper.activeIndex;
+    const swiperCenter = -swiper.translate + swiper.width / 2;
+
     swiper.slides.forEach((slide, i) => {
-        const dist = Math.abs(i - activeIndex);
-        const scale = SCALES[Math.min(dist, SCALES.length - 1)];
+        const slideCenter = slide.swiperSlideOffset + SLIDE_W / 2;
+        const p = (slideCenter - swiperCenter) / SLIDE_W;
+        const abs = Math.abs(p);
+        const scale = getScaleForProgress(p);
+
         let offsetX = 0;
-        if (dist > 0) {
-            const sign = i > activeIndex ? -1 : 1;
-            for (let d = 1; d <= dist; d++) {
+        if (abs > 0) {
+            const sign = p > 0 ? -1 : 1;
+            const wholePart = Math.floor(abs);
+            for (let d = 1; d <= wholePart; d++) {
                 const s = SCALES[Math.min(d, SCALES.length - 1)];
-                const prevS = SCALES[Math.min(d - 1, SCALES.length - 1)];
-                offsetX += SLIDE_W * (1 - s) / 2 + SLIDE_W * (1 - prevS) / 2;
+                const sPrev = SCALES[Math.min(d - 1, SCALES.length - 1)];
+                const extraGap = SLIDE_W * (1 - s) / 2 + SLIDE_W * (1 - sPrev) / 2;
+                offsetX += extraGap - VISUAL_GAP;
+            }
+            const frac = abs - wholePart;
+            if (frac > 0) {
+                const s = getScaleForProgress(abs);
+                const sPrev = getScaleForProgress(wholePart);
+                const extraGap = SLIDE_W * (1 - s) / 2 + SLIDE_W * (1 - sPrev) / 2;
+                offsetX += frac * (extraGap - VISUAL_GAP);
             }
             offsetX *= sign;
         }
+
         slide.style.transform = `translateX(${offsetX}px) scale(${scale})`;
-        slide.style.pointerEvents = dist <= 1 ? 'auto' : 'none';
-        slide.style.zIndex = dist === 0 ? 3 : dist === 1 ? 2 : 1;
+        slide.style.pointerEvents = abs <= 1.5 ? 'auto' : 'none';
+        slide.style.zIndex = abs < 0.5 ? 3 : abs < 1.5 ? 2 : 1;
     });
 }
 
 if (document.querySelector('.practitioners__slider')) {
-    const gap = window.innerWidth <= 576 ? 20 : GAP;
     practitionersSwiper = new Swiper('.practitioners__slider', {
         slidesPerView: 'auto',
         centeredSlides: true,
-        spaceBetween: gap,
+        spaceBetween: 0,
         initialSlide: 4,
         slideToClickedSlide: true,
+        watchSlidesProgress: true,
         on: {
             init: function () { applyPractitionersTransforms(this); },
+            setTranslate: function () { applyPractitionersTransforms(this); },
             slideChangeTransitionEnd: function () {
-                applyPractitionersTransforms(this);
                 $('.practitioners__card_flipped').removeClass('practitioners__card_flipped');
             },
         },
