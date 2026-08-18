@@ -6,6 +6,12 @@
     gap: 57px;
     padding: 120px clamp($spacing-md, 13vw, $spacing-5xl);
 
+    margin-bottom: 100px;
+
+    @media screen and (max-width: $breakpoint768) {
+        margin-bottom: 50px;
+    }
+
     &__bg-full {
         position: absolute;
         bottom: -100px;

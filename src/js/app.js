@@ -204,8 +204,9 @@ if (document.querySelector('.features__slider')) {
 const flower = document.querySelector('.questions__flower');
 const flower2 = document.querySelector('.practitioners__flower');
 const flower3 = document.querySelector('.clarity__flower');
+const flower4 = document.querySelector('.garden__flower');
 
-if (flower || flower2 || flower3) {
+if (flower || flower2 || flower3 || flower4) {
     window.addEventListener('scroll', () => {
         const viewCenter = window.innerHeight / 2;
 
@@ -225,6 +226,12 @@ if (flower || flower2 || flower3) {
             const rect = flower3.closest('.clarity').getBoundingClientRect();
             const offset = (rect.top + rect.height / 2 - viewCenter) * -0.15;
             flower3.style.transform = `translateY(${offset}px)`;
+        }
+
+        if (flower4) {
+            const rect = flower4.closest('.garden').getBoundingClientRect();
+            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.15;
+            flower4.style.transform = `translateY(${offset}px)`;
         }
     });
 }

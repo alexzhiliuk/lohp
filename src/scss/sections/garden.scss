@@ -1,0 +1,143 @@
+.garden {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    padding: 120px clamp($spacing-md, 13vw, $spacing-5xl);
+
+    &__flower {
+        position: absolute;
+        right: 0;
+        bottom: -100px;
+        width: clamp(150px, 25vw, 400px);
+        height: auto;
+        pointer-events: none;
+        z-index: 1;
+
+        @media screen and (max-width: $breakpoint576) {
+            display: none;
+        }
+    }
+
+    &__title {
+        @include h2;
+        color: $colorDeepPurple80;
+        text-align: center;
+        max-width: 1010px;
+    }
+
+    &__cards {
+        display: flex;
+        gap: 40px;
+        row-gap: 10px;
+        align-items: center;
+    }
+
+    &__card {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 430px;
+        padding: 24px;
+        background: $colorPinkWhite;
+        border: 1px solid $colorVibrantLilac;
+        border-radius: 20px;
+    }
+
+    &__card-emoji {
+        @include h3;
+        flex-shrink: 0;
+    }
+
+    &__card-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__card-label {
+        @include caption-2;
+        color: $colorDeepPurple80;
+    }
+
+    &__card-value {
+        @include h4;
+        color: $colorDeepPurple80;
+    }
+
+    &__description {
+        @include subtitle;
+        color: $colorWarmBlack70;
+        text-align: center;
+        max-width: 758px;
+    }
+
+    &__bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    &__hint {
+        @include body-text-2;
+        color: $colorWarmBlack60;
+        text-align: center;
+        max-width: 512px;
+    }
+
+    &__btn-desktop,
+    &__btn-mobile {
+        color: inherit;
+    }
+
+    &__btn-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: $breakpoint992) {
+    .garden {
+        &__cards {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        &__card {
+            width: 100%;
+            max-width: 576px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint768) {
+    .garden {
+        padding: 80px $spacing-md;
+        gap: 40px;
+    }
+}
+
+@media (max-width: $breakpoint576) {
+    .garden {
+        padding: 60px $spacing-md;
+
+        &__card {
+            padding: 16px 24px;
+            gap: 20px;
+        }
+
+        &__card-value {
+            font-size: 24px;
+            line-height: 30px;
+        }
+
+        &__btn-desktop {
+            display: none;
+        }
+
+        &__btn-mobile {
+            display: inline;
+        }
+    }
+}
