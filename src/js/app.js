@@ -131,7 +131,7 @@ if (document.querySelector('.practitioners__slider')) {
         initialSlide: 4,
         slideToClickedSlide: false,
         watchSlidesProgress: true,
-        allowTouchMove: window.innerWidth < 576,
+        allowTouchMove: window.innerWidth < 992,
         on: {
             init: function () { applyPractitionersTransforms(this); },
             setTranslate: function () { applyPractitionersTransforms(this); },
@@ -263,4 +263,17 @@ if (claritySection) {
         });
     }, { threshold: 0.3 });
     clarityObserver.observe(claritySection);
+}
+
+// Header light theme over testimonials
+const testimonialsSection = document.querySelector('.testimonials');
+const header = document.querySelector('.header');
+if (testimonialsSection && header) {
+    window.addEventListener('scroll', () => {
+        const headerH = header.offsetHeight;
+        const rect = testimonialsSection.getBoundingClientRect();
+        const halfHeader = headerH / 2;
+        const overlaps = rect.top < halfHeader && rect.bottom > halfHeader;
+        header.classList.toggle('header_light', overlaps);
+    });
 }

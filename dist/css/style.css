@@ -535,6 +535,16 @@ button {
   display: flex;
   align-items: center;
 }
+.header_light:not(.header_open) .header__nav-link {
+  color: #FFFFFF;
+}
+.header_light:not(.header_open) .header__logo img {
+  filter: brightness(0) invert(1);
+}
+.header_light:not(.header_open) .btn--outline {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
 
 @media (max-width: 1023.98px) {
   .header {

@@ -116,6 +116,21 @@
         display: flex;
         align-items: center;
     }
+
+    &_light:not(&_open) {
+        .header__nav-link {
+            color: $colorWhite;
+        }
+
+        .header__logo img {
+            filter: brightness(0) invert(1);
+        }
+
+        .btn--outline {
+            border-color: $colorWhite;
+            color: $colorWhite;
+        }
+    }
 }
 
 @media (max-width: $burgerBreakpoint) {
