@@ -1,0 +1,173 @@
+.clarity {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding: 120px clamp($spacing-sm, 5vw, $spacing-lg);
+    max-width: 100vw;
+
+    &__flower {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: clamp(150px, 25vw, 350px);
+        height: auto;
+        pointer-events: none;
+        z-index: 0;
+        will-change: transform;
+
+        @media screen and (max-width: $breakpoint576) {
+            display: none;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        max-width: 100%;
+    }
+
+    &__title {
+        @include h2;
+        color: $colorDeepPurple80;
+        text-align: center;
+        max-width: 1260px;
+    }
+
+    &__stats {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 80px;
+        gap: 40px;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 1040px;
+    }
+
+    &__stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__stat-number {
+        @include h3;
+        color: $colorBerryPink;
+    }
+
+    &__stat-label {
+        @include body-text;
+        color: $colorWarmBlack70;
+        text-align: center;
+    }
+
+    &__bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 100px;
+    }
+
+    &__avatars {
+        display: flex;
+        align-items: center;
+    }
+
+    &__avatar {
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid $colorPinkWhite;
+
+        & + & {
+            margin-left: -14px;
+        }
+    }
+
+    &__press {
+        display: flex;
+        align-items: center;
+        gap: 108px;
+        opacity: 0.8;
+    }
+
+    &__press-logo {
+        height: 52px;
+        width: auto;
+    }
+}
+
+@media (max-width: $breakpoint768) {
+    .clarity {
+        padding: 80px $spacing-md;
+        gap: 40px;
+
+        &__title {
+            letter-spacing: -1.76px;
+        }
+
+        &__stats {
+            gap: 40px;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        &__bottom {
+            gap: 60px;
+        }
+
+        &__press {
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        &__press-logo {
+            height: 40px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint576) {
+    .clarity {
+        padding: 60px $spacing-md;
+
+        &__title {
+            font-size: 34px;
+            line-height: 40px;
+            letter-spacing: -1.36px;
+        }
+
+        &__stats {
+            gap: 40px;
+        }
+
+        &__stat-number {
+            font-size: 40px;
+            line-height: 48px;
+        }
+
+        &__stat-label {
+            font-size: 16px;
+        }
+
+        &__bottom {
+            gap: 40px;
+        }
+
+        &__press {
+            gap: 30px;
+        }
+
+        &__press-logo {
+            height: 32px;
+        }
+    }
+}

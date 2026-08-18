@@ -174,8 +174,9 @@ $('.practitioners__filter').on('click', function() {
 // Parallax flowers
 const flower = document.querySelector('.questions__flower');
 const flower2 = document.querySelector('.practitioners__flower');
+const flower3 = document.querySelector('.clarity__flower');
 
-if (flower || flower2) {
+if (flower || flower2 || flower3) {
     window.addEventListener('scroll', () => {
         const viewCenter = window.innerHeight / 2;
 
@@ -190,5 +191,40 @@ if (flower || flower2) {
             const offset = (rect.top + rect.height / 2 - viewCenter) * -0.15;
             flower2.style.transform = `translateY(${offset}px)`;
         }
+
+        if (flower3) {
+            const rect = flower3.closest('.clarity').getBoundingClientRect();
+            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.15;
+            flower3.style.transform = `translateY(${offset}px)`;
+        }
     });
+}
+
+// Clarity — animated counters
+const claritySection = document.querySelector('.clarity');
+if (claritySection) {
+    const clarityObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                document.querySelectorAll('.clarity__stat-number').forEach(el => {
+                    const target = parseFloat(el.dataset.target);
+                    const decimals = parseInt(el.dataset.decimals) || 0;
+                    const suffix = el.dataset.suffix || '';
+                    const duration = 2000;
+                    const startTime = performance.now();
+
+                    function update(now) {
+                        const progress = Math.min((now - startTime) / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = (target * eased).toFixed(decimals);
+                        el.textContent = current + suffix;
+                        if (progress < 1) requestAnimationFrame(update);
+                    }
+                    requestAnimationFrame(update);
+                });
+                clarityObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    clarityObserver.observe(claritySection);
 }
