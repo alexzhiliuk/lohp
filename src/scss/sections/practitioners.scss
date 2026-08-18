@@ -370,10 +370,18 @@
         white-space: nowrap;
         transition: $quickTransition;
 
+        &:hover {
+            border-color: $colorMulberryBrown;
+        }
+
         &_active {
             background: $colorMulberryBrown;
             border-color: $colorMulberryBrown;
             color: $colorPinkWhite;
+
+            &:hover {
+                opacity: 0.85;
+            }
 
             .practitioners__filter-icon {
                 filter: brightness(0) invert(1);

@@ -428,12 +428,19 @@ button {
   font-size: clamp(18px, 3vw, 24px);
   font-weight: 500;
 }
+.btn--primary:hover {
+  opacity: 0.85;
+}
 .btn--outline {
   border: 1px solid #4F2340;
   color: #4F2340;
   padding: 12px 24px;
   font-size: 18px;
   background: transparent;
+}
+.btn--outline:hover {
+  background: #4F2340;
+  color: #FFFFFF;
 }
 
 .header {
@@ -523,6 +530,9 @@ button {
   color: #4F2340;
   letter-spacing: -0.36px;
 }
+.header__nav-link:hover {
+  opacity: 0.6;
+}
 .header__logo {
   position: absolute;
   left: 50%;
@@ -539,10 +549,16 @@ button {
   display: flex;
   align-items: center;
 }
+.header__overlay {
+  display: none;
+}
 .header_light:not(.header_open) .header__nav-link {
   color: #FFFFFF;
 }
 .header_light:not(.header_open) .header__logo img {
+  filter: brightness(0) invert(1);
+}
+.header_light:not(.header_open) .header__burger-open {
   filter: brightness(0) invert(1);
 }
 .header_light:not(.header_open) .btn--outline {
@@ -587,7 +603,6 @@ button {
     right: 0;
     height: 60vh;
     background: #FEF9FC;
-    border-radius: 0 0 30px 30px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -597,12 +612,26 @@ button {
     z-index: -1;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   }
+  .header__overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -2;
+  }
   .header__nav-link {
     font-size: 20px;
     font-weight: 500;
   }
   .header_open .header__nav {
     transform: translateY(0);
+  }
+  .header_open .header__logo {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .header_open .header__overlay {
+    display: block;
   }
   .header_open .header__burger-open {
     display: none;
@@ -1504,10 +1533,16 @@ button {
   white-space: nowrap;
   transition: all 120ms ease-out;
 }
+.practitioners__filter:hover {
+  border-color: #6F3F48;
+}
 .practitioners__filter_active {
   background: #6F3F48;
   border-color: #6F3F48;
   color: #FEF9FC;
+}
+.practitioners__filter_active:hover {
+  opacity: 0.85;
 }
 .practitioners__filter_active .practitioners__filter-icon {
   filter: brightness(0) invert(1);
@@ -2469,6 +2504,9 @@ button {
   letter-spacing: -0.4px;
   color: #4F2340;
 }
+.footer__nav-link:hover {
+  opacity: 0.6;
+}
 .footer__app-title {
   font-family: "Literatura Present", Georgia, "Times New Roman", serif;
   font-size: clamp(20px, 1.5vw, 34px);
@@ -2517,6 +2555,9 @@ button {
 .footer__social {
   width: 30px;
   height: 30px;
+}
+.footer__social:hover {
+  opacity: 0.6;
 }
 .footer__social img {
   width: 100%;

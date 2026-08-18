@@ -10,7 +10,12 @@ import { Pagination } from 'swiper/modules';
 
 $('.header__burger').on('click', function() {
     $('.header').toggleClass('header_open');
-    $('body').toggleClass('lock');
+    $('html').toggleClass('lock');
+});
+
+$('.header__overlay').on('click', function() {
+    $('.header').removeClass('header_open');
+    $('html').removeClass('lock');
 });
 
 // Questions section — fade in + card spread / swiper
@@ -218,25 +223,25 @@ if (flower || flower2 || flower3 || flower4) {
 
         if (flower) {
             const rect = flower.closest('.questions').getBoundingClientRect();
-            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.15;
+            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
             flower.style.transform = `translateY(${offset}px)`;
         }
 
         if (flower2) {
             const rect = flower2.closest('.practitioners').getBoundingClientRect();
-            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.15;
+            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
             flower2.style.transform = `translateY(${offset}px)`;
         }
 
         if (flower3) {
             const rect = flower3.closest('.clarity').getBoundingClientRect();
-            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.15;
+            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
             flower3.style.transform = `translateY(${offset}px)`;
         }
 
         if (flower4) {
             const rect = flower4.closest('.garden').getBoundingClientRect();
-            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.15;
+            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
             flower4.style.transform = `translateY(${offset}px)`;
         }
     });
