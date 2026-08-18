@@ -1,6 +1,5 @@
 .features {
     position: relative;
-    z-index: -1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,7 +18,7 @@
         width: 3732px;
         height: auto;
         pointer-events: none;
-        z-index: 0;
+        z-index: -1;
 
         &_mobile {
             display: none;
@@ -46,12 +45,12 @@
 
     &__bg {
         position: absolute;
-        left: -252px;
-        top: -224px;
-        width: 1012px;
+        left: -13vw;
+        top: -13vw;
+        width: clamp(600px, 50vw, 1012px);
         height: auto;
         pointer-events: none;
-        z-index: 0;
+        z-index: -1;
     }
 
     &__slider {
@@ -66,9 +65,11 @@
         align-items: center;
         gap: 80px;
         width: 100% !important;
+        transition: padding 0.4s ease;
 
-        .swiper-slide-next & {
-            justify-content: center;
+        &.swiper-slide-active {
+            padding-left: max(0px, calc((100% - 1258px) / 2));
+            padding-right: max(0px, calc((100% - 1258px) / 2));
         }
     }
 
@@ -105,6 +106,8 @@
         display: flex;
         flex-direction: column;
         gap: 60px;
+        flex: 1;
+        min-width: 0;
         max-width: 913px;
         opacity: 0;
         transition: opacity 0.4s ease;
@@ -160,6 +163,11 @@
             flex-direction: column;
             gap: 40px;
             align-items: center;
+            transition: none;
+
+            &.swiper-slide-active {
+                padding: 0;
+            }
         }
 
         &__text {
@@ -217,6 +225,10 @@
             width: 200px;
             height: 250px;
             padding: 50px 20px 30px;
+
+            .swiper-slide-next & {
+                translate: -43vw;
+            }
         }
 
         &__card-icon {

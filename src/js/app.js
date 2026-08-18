@@ -33,26 +33,32 @@ if (questionsSection) {
         }
     }
 
-    const questionsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const header = questionsSection.querySelector('.questions__header');
-                const cards = questionsSection.querySelector('.questions__cards');
+    const header = questionsSection.querySelector('.questions__header');
+    const cards = questionsSection.querySelector('.questions__cards');
 
-                if (header) header.classList.add('questions__header_visible');
-
-                if (window.innerWidth >= MOBILE_BP) {
-                    setTimeout(() => {
-                        if (cards) cards.classList.add('questions__cards_spread');
-                    }, 300);
+    if (header) {
+        const headerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    header.classList.add('questions__header_visible');
+                    headerObserver.unobserve(entry.target);
                 }
+            });
+        }, { threshold: 0.3 });
+        headerObserver.observe(header);
+    }
 
-                questionsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    questionsObserver.observe(questionsSection);
+    if (cards && window.innerWidth >= MOBILE_BP) {
+        const cardsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    cards.classList.add('questions__cards_spread');
+                    cardsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.6 });
+        cardsObserver.observe(cards);
+    }
     initQuestionsSwiper();
     window.addEventListener('resize', initQuestionsSwiper);
 

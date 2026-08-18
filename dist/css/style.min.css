@@ -829,6 +829,7 @@ button {
   transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   transform: rotate(0deg) translateX(0) translateY(20px);
   z-index: 1;
+  cursor: pointer;
 }
 .questions__card:hover {
   z-index: 5;
@@ -1022,7 +1023,7 @@ button {
 }
 .questions__card-back {
   transform: rotateY(180deg);
-  background: #BFC4FC;
+  background: #FFEDAA;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1030,6 +1031,14 @@ button {
   padding: 20px 16px;
   text-align: center;
   gap: 10px;
+}
+.questions__card-back-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 .questions__card-back-title {
   font-family: "Literatura Present", Georgia, "Times New Roman", serif;
@@ -1479,7 +1488,7 @@ button {
 }
 .practitioners__filter {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
-  font-size: 20px;
+  font-size: clamp(16px, 1vw, 20px);
   font-weight: 400;
   line-height: 26px;
   letter-spacing: -0.4px;
@@ -1875,7 +1884,7 @@ button {
 }
 .testimonials__role {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
-  font-size: 20px;
+  font-size: clamp(16px, 1vw, 20px);
   font-weight: 400;
   line-height: 26px;
   letter-spacing: -0.4px;
@@ -1961,7 +1970,6 @@ button {
 }
 .features {
   position: relative;
-  z-index: -1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1980,7 +1988,7 @@ button {
   width: 3732px;
   height: auto;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
 .features__bg-full_mobile {
   display: none;
@@ -2002,12 +2010,12 @@ button {
 }
 .features__bg {
   position: absolute;
-  left: -252px;
-  top: -224px;
-  width: 1012px;
+  left: -13vw;
+  top: -13vw;
+  width: clamp(600px, 50vw, 1012px);
   height: auto;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
 .features__slider {
   position: relative;
@@ -2020,9 +2028,11 @@ button {
   align-items: center;
   gap: 80px;
   width: 100% !important;
+  transition: padding 0.4s ease;
 }
-.swiper-slide-next .features__slide {
-  justify-content: center;
+.features__slide.swiper-slide-active {
+  padding-left: max(0px, (100% - 1258px) / 2);
+  padding-right: max(0px, (100% - 1258px) / 2);
 }
 .features__card {
   flex-shrink: 0;
@@ -2062,6 +2072,8 @@ button {
   display: flex;
   flex-direction: column;
   gap: 60px;
+  flex: 1;
+  min-width: 0;
   max-width: 913px;
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -2132,6 +2144,10 @@ button {
     flex-direction: column;
     gap: 40px;
     align-items: center;
+    transition: none;
+  }
+  .features__slide.swiper-slide-active {
+    padding: 0;
   }
   .features__text {
     display: contents;
@@ -2178,6 +2194,9 @@ button {
     width: 200px;
     height: 250px;
     padding: 50px 20px 30px;
+  }
+  .swiper-slide-next .features__card {
+    translate: -43vw;
   }
   .features__card-icon {
     width: 70px;
@@ -2262,15 +2281,17 @@ button {
 }
 .garden__cards {
   display: flex;
-  gap: 40px;
+  flex-wrap: wrap;
+  gap: clamp(20px, 2vw, 40px);
   row-gap: 10px;
   align-items: center;
+  width: min(100%, 1370px);
 }
 .garden__card {
   display: flex;
   align-items: center;
   gap: 20px;
-  width: 430px;
+  flex: 1 0 430px;
   padding: 24px;
   background: #FEF9FC;
   border: 1px solid #F8DDFF;
@@ -2328,7 +2349,7 @@ button {
 }
 .garden__hint {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
-  font-size: 20px;
+  font-size: clamp(16px, 1vw, 20px);
   font-weight: 400;
   line-height: 26px;
   letter-spacing: -0.4px;
@@ -2351,6 +2372,7 @@ button {
   .garden__card {
     width: 100%;
     max-width: 576px;
+    flex: unset;
   }
 }
 @media (max-width: 767.98px) {
@@ -2409,7 +2431,7 @@ button {
 }
 .footer__description {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
-  font-size: 20px;
+  font-size: clamp(16px, 1vw, 20px);
   font-weight: 400;
   line-height: 26px;
   letter-spacing: -0.4px;
@@ -2428,7 +2450,7 @@ button {
 }
 .footer__nav-title {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
-  font-size: 24px;
+  font-size: clamp(18px, 1.2vw, 24px);
   font-weight: 500;
   line-height: normal;
   letter-spacing: 0;
@@ -2441,7 +2463,7 @@ button {
 }
 .footer__nav-link {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
-  font-size: 20px;
+  font-size: clamp(16px, 1vw, 20px);
   font-weight: 400;
   line-height: 26px;
   letter-spacing: -0.4px;
@@ -2481,7 +2503,7 @@ button {
 .footer__copyright {
   flex: 1;
   font-family: "ABC Social", "Inter", Arial, sans-serif;
-  font-size: 20px;
+  font-size: clamp(16px, 1vw, 20px);
   font-weight: 400;
   line-height: 26px;
   letter-spacing: -0.4px;

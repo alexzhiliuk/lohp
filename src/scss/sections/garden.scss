@@ -29,16 +29,18 @@
 
     &__cards {
         display: flex;
-        gap: 40px;
+        flex-wrap: wrap;
+        gap: clamp(20px, 2vw, 40px);
         row-gap: 10px;
         align-items: center;
+        width: min(100%, 1370px);
     }
 
     &__card {
         display: flex;
         align-items: center;
         gap: 20px;
-        width: 430px;
+        flex: 1 0 430px;
         padding: 24px;
         background: $colorPinkWhite;
         border: 1px solid $colorVibrantLilac;
@@ -107,6 +109,7 @@
         &__card {
             width: 100%;
             max-width: 576px;
+            flex: unset;
         }
     }
 }
