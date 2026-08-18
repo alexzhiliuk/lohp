@@ -87,7 +87,9 @@
         cursor: pointer;
     }
 
-    &__card:hover &__card-inner {
+    .swiper-slide-active &__card:hover &__card-inner,
+    .swiper-slide-prev &__card:hover &__card-inner,
+    .swiper-slide-next &__card:hover &__card-inner {
         transform: scale(1.03);
     }
 
@@ -134,7 +136,9 @@
         pointer-events: none;
     }
 
-    &__card:hover &__card-overlay {
+    .swiper-slide-active &__card:hover &__card-overlay,
+    .swiper-slide-prev &__card:hover &__card-overlay,
+    .swiper-slide-next &__card:hover &__card-overlay {
         pointer-events: auto;
     }
 
@@ -181,7 +185,9 @@
         }
     }
 
-    &__card:hover &__card-blur {
+    .swiper-slide-active &__card:hover &__card-blur,
+    .swiper-slide-prev &__card:hover &__card-blur,
+    .swiper-slide-next &__card:hover &__card-blur {
         opacity: 1;
     }
 
@@ -266,7 +272,9 @@
         flex-shrink: 0;
     }
 
-    &__card:hover &__card-info {
+    .swiper-slide-active &__card:hover &__card-info,
+    .swiper-slide-prev &__card:hover &__card-info,
+    .swiper-slide-next &__card:hover &__card-info {
         opacity: 1;
     }
 

@@ -57,7 +57,7 @@ if (questionsSection) {
 }
 
 // Practitioners slider
-const VISUAL_GAP = 10;
+const VISUAL_GAP = 20;
 const SCALES = [1, 0.85, 0.73, 0.63, 0.55];
 const SLIDE_W = 354;
 let practitionersSwiper = null;
@@ -101,7 +101,7 @@ function applyPractitionersTransforms(swiper) {
         }
 
         slide.style.transform = `translateX(${offsetX}px) scale(${scale})`;
-        slide.style.pointerEvents = abs <= 1.5 ? 'auto' : 'none';
+        slide.style.pointerEvents = abs <= 3.5 ? 'auto' : 'none';
         slide.style.zIndex = abs < 0.5 ? 3 : abs < 1.5 ? 2 : 1;
     });
 }
@@ -112,8 +112,9 @@ if (document.querySelector('.practitioners__slider')) {
         centeredSlides: true,
         spaceBetween: 0,
         initialSlide: 4,
-        slideToClickedSlide: true,
+        slideToClickedSlide: false,
         watchSlidesProgress: true,
+        allowTouchMove: false,
         on: {
             init: function () { applyPractitionersTransforms(this); },
             setTranslate: function () { applyPractitionersTransforms(this); },
@@ -124,18 +125,19 @@ if (document.querySelector('.practitioners__slider')) {
     });
 }
 
-// Practitioners card flip (only on active slide, not during slide change)
-let slideChanged = false;
-if (practitionersSwiper) {
-    practitionersSwiper.on('slideChange', function() {
-        slideChanged = true;
-    });
-}
-$('.practitioners__card').on('click', function() {
-    if (!slideChanged && $(this).closest('.swiper-slide-active').length) {
-        $(this).toggleClass('practitioners__card_flipped');
+// Practitioners card click: flip on active, navigate on others
+$('.practitioners__slide').on('click', function() {
+    if (!practitionersSwiper) return;
+    const slideIndex = $(this).index();
+    const activeIndex = practitionersSwiper.activeIndex;
+
+    if (slideIndex === activeIndex) {
+        $(this).find('.practitioners__card').toggleClass('practitioners__card_flipped');
+    } else if (slideIndex < activeIndex) {
+        practitionersSwiper.slidePrev();
+    } else {
+        practitionersSwiper.slideNext();
     }
-    slideChanged = false;
 });
 
 // Practitioners filters

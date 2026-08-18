@@ -1188,7 +1188,7 @@ button {
   perspective: 1000px;
   cursor: pointer;
 }
-.practitioners__card:hover .practitioners__card-inner {
+.swiper-slide-active .practitioners__card:hover .practitioners__card-inner, .swiper-slide-prev .practitioners__card:hover .practitioners__card-inner, .swiper-slide-next .practitioners__card:hover .practitioners__card-inner {
   transform: scale(1.03);
 }
 .practitioners__card_flipped .practitioners__card-inner {
@@ -1227,7 +1227,7 @@ button {
   padding: 40px 40px 50px;
   pointer-events: none;
 }
-.practitioners__card:hover .practitioners__card-overlay {
+.swiper-slide-active .practitioners__card:hover .practitioners__card-overlay, .swiper-slide-prev .practitioners__card:hover .practitioners__card-overlay, .swiper-slide-next .practitioners__card:hover .practitioners__card-overlay {
   pointer-events: auto;
 }
 .practitioners__card-blur {
@@ -1266,7 +1266,7 @@ button {
   backdrop-filter: blur(64px);
   mask: linear-gradient(rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%);
 }
-.practitioners__card:hover .practitioners__card-blur {
+.swiper-slide-active .practitioners__card:hover .practitioners__card-blur, .swiper-slide-prev .practitioners__card:hover .practitioners__card-blur, .swiper-slide-next .practitioners__card:hover .practitioners__card-blur {
   opacity: 1;
 }
 .practitioners__card-info {
@@ -1340,7 +1340,7 @@ button {
   height: 24px;
   flex-shrink: 0;
 }
-.practitioners__card:hover .practitioners__card-info {
+.swiper-slide-active .practitioners__card:hover .practitioners__card-info, .swiper-slide-prev .practitioners__card:hover .practitioners__card-info, .swiper-slide-next .practitioners__card:hover .practitioners__card-info {
   opacity: 1;
 }
 .practitioners__card-name-wrap {
