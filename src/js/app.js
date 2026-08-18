@@ -54,6 +54,22 @@ if (questionsSection) {
     questionsObserver.observe(questionsSection);
     initQuestionsSwiper();
     window.addEventListener('resize', initQuestionsSwiper);
+
+    // Desktop cards — click to flip (only one at a time)
+    $('.questions__card').on('click', function() {
+        const wasFlipped = $(this).hasClass('questions__card_flipped');
+        $('.questions__card_flipped').removeClass('questions__card_flipped');
+        if (!wasFlipped) $(this).addClass('questions__card_flipped');
+    });
+
+    // Mobile slides — click to flip (active only, one at a time)
+    $('.questions__slide').on('click', function() {
+        if ($(this).hasClass('swiper-slide-active')) {
+            const wasFlipped = $(this).hasClass('questions__slide_flipped');
+            $('.questions__slide_flipped').removeClass('questions__slide_flipped');
+            if (!wasFlipped) $(this).addClass('questions__slide_flipped');
+        }
+    });
 }
 
 // Practitioners slider
