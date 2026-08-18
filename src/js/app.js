@@ -93,10 +93,27 @@ if (document.querySelector('.practitioners__slider')) {
         slideToClickedSlide: true,
         on: {
             init: function () { applyPractitionersTransforms(this); },
-            slideChangeTransitionEnd: function () { applyPractitionersTransforms(this); },
+            slideChangeTransitionEnd: function () {
+                applyPractitionersTransforms(this);
+                $('.practitioners__card_flipped').removeClass('practitioners__card_flipped');
+            },
         },
     });
 }
+
+// Practitioners card flip (only on active slide, not during slide change)
+let slideChanged = false;
+if (practitionersSwiper) {
+    practitionersSwiper.on('slideChange', function() {
+        slideChanged = true;
+    });
+}
+$('.practitioners__card').on('click', function() {
+    if (!slideChanged && $(this).closest('.swiper-slide-active').length) {
+        $(this).toggleClass('practitioners__card_flipped');
+    }
+    slideChanged = false;
+});
 
 // Practitioners filters
 $('.practitioners__filter').on('click', function() {
