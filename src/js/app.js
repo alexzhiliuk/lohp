@@ -211,15 +211,21 @@ if (document.querySelector('.features__slider')) {
     });
 }
 
-// Parallax flowers
+// Parallax
+const heroBg = document.querySelector('.hero__bg-img');
 const flower = document.querySelector('.questions__flower');
 const flower2 = document.querySelector('.practitioners__flower');
 const flower3 = document.querySelector('.clarity__flower');
 const flower4 = document.querySelector('.garden__flower');
 
-if (flower || flower2 || flower3 || flower4) {
+if (heroBg || flower || flower2 || flower3 || flower4) {
     window.addEventListener('scroll', () => {
         const viewCenter = window.innerHeight / 2;
+
+        if (heroBg) {
+            const offset = window.scrollY * 0.4;
+            heroBg.style.transform = `translateY(${offset}px)`;
+        }
 
         if (flower) {
             const rect = flower.closest('.questions').getBoundingClientRect();
