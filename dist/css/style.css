@@ -446,6 +446,10 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+.header_hidden {
+  transform: translateY(-100%);
 }
 .header__blur {
   position: absolute;

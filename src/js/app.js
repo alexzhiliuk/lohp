@@ -265,15 +265,33 @@ if (claritySection) {
     clarityObserver.observe(claritySection);
 }
 
-// Header light theme over testimonials
+// Header: hide on scroll down, show on scroll up + light theme over testimonials
 const testimonialsSection = document.querySelector('.testimonials');
 const header = document.querySelector('.header');
-if (testimonialsSection && header) {
+if (header) {
+    let lastScrollY = window.scrollY;
+
     window.addEventListener('scroll', () => {
-        const headerH = header.offsetHeight;
-        const rect = testimonialsSection.getBoundingClientRect();
-        const halfHeader = headerH / 2;
-        const overlaps = rect.top < halfHeader && rect.bottom > halfHeader;
-        header.classList.toggle('header_light', overlaps);
+        const currentScrollY = window.scrollY;
+        const isOpen = header.classList.contains('header_open');
+
+        // Hide/show
+        if (!isOpen) {
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                header.classList.add('header_hidden');
+            } else {
+                header.classList.remove('header_hidden');
+            }
+        }
+
+        // Light theme
+        if (testimonialsSection) {
+            const halfHeader = header.offsetHeight / 2;
+            const rect = testimonialsSection.getBoundingClientRect();
+            const overlaps = rect.top < halfHeader && rect.bottom > halfHeader;
+            header.classList.toggle('header_light', overlaps);
+        }
+
+        lastScrollY = currentScrollY;
     });
 }

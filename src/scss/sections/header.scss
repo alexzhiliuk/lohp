@@ -8,6 +8,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: transform 0.3s ease;
+
+    &_hidden {
+        transform: translateY(-100%);
+    }
 
     &__blur {
         position: absolute;
