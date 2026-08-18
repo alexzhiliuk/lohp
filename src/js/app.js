@@ -130,7 +130,7 @@ if (document.querySelector('.practitioners__slider')) {
         initialSlide: 4,
         slideToClickedSlide: false,
         watchSlidesProgress: true,
-        allowTouchMove: false,
+        allowTouchMove: window.innerWidth < 576,
         on: {
             init: function () { applyPractitionersTransforms(this); },
             setTranslate: function () { applyPractitionersTransforms(this); },

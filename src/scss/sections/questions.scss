@@ -171,11 +171,27 @@
 
     // Mobile slider (hidden on desktop)
     &__slider {
+        position: relative;
+        overflow: visible !important;
         padding: 50px 0 !important;
         margin: -50px 0;
 
         @media screen and (min-width: $breakpoint576) {
             display: none !important;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 120px;
+            pointer-events: none;
+            z-index: 0;
+            background: rgba(154, 133, 56, 0.70);
+            filter: blur(80px);
         }
     }
 
@@ -313,10 +329,10 @@
         transform: translateX(-50%);
         width: 700px;
         height: 200px;
-        background: radial-gradient(ellipse, rgba($colorVibrantLilac, 0.5) 0%, transparent 70%);
         pointer-events: none;
         z-index: 0;
-        filter: blur(40px);
+        background: rgba(154, 133, 56, 0.70);
+        filter: blur(100px);
     }
 }
 
