@@ -163,6 +163,14 @@ if (document.querySelector('.practitioners__slider')) {
         on: {
             init: function () { applyPractitionersTransforms(this); },
             setTranslate: function () { applyPractitionersTransforms(this); },
+            slideChange: function () {
+                const activeSlide = this.slides[this.activeIndex];
+                const category = activeSlide?.dataset.category;
+                if (category) {
+                    $('.practitioners__filter').removeClass('practitioners__filter_active');
+                    $(`.practitioners__filter[data-category="${category}"]`).addClass('practitioners__filter_active');
+                }
+            },
             slideChangeTransitionEnd: function () {
                 $('.practitioners__card_flipped').removeClass('practitioners__card_flipped');
             },
