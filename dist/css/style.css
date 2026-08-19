@@ -447,9 +447,15 @@ button {
 .btn--outline {
   border: 1px solid #4F2340;
   color: #4F2340;
-  padding: 12px 24px;
-  font-size: clamp(16px, 1vw, 18px);
+  padding: 0.6vw 1.2vw;
+  font-size: 0.9vw;
   background: transparent;
+}
+@media screen and (max-width: 767.98px) {
+  .btn--outline {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
 }
 .btn--outline:hover {
   background: #4F2340;
@@ -535,13 +541,18 @@ button {
 }
 .header__nav-link {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
-  font-size: clamp(16px, 1vw, 18px);
+  font-size: 0.9vw;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0;
   text-transform: uppercase;
   color: #4F2340;
   letter-spacing: -0.36px;
+}
+@media screen and (max-width: 767.98px) {
+  .header__nav-link {
+    font-size: 16px;
+  }
 }
 .header__nav-link:hover {
   opacity: 0.6;
@@ -1520,13 +1531,18 @@ button {
 }
 .practitioners__filters-label {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
-  font-size: clamp(16px, 1vw, 18px);
+  font-size: 0.9vw;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0;
   color: #4F2340;
   text-transform: uppercase;
   white-space: nowrap;
+}
+@media screen and (max-width: 767.98px) {
+  .practitioners__filters-label {
+    font-size: 16px;
+  }
 }
 .practitioners__filters-line {
   width: 40px;
@@ -2394,11 +2410,16 @@ button {
 }
 .garden__card-label {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
-  font-size: clamp(16px, 1vw, 18px);
+  font-size: 0.9vw;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0;
   color: #4F2340;
+}
+@media screen and (max-width: 767.98px) {
+  .garden__card-label {
+    font-size: 16px;
+  }
 }
 .garden__card-value {
   font-family: "Literatura Present", Georgia, "Times New Roman", serif;

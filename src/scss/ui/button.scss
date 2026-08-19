@@ -25,9 +25,14 @@
     &--outline {
         border: 1px solid $colorDeepPurple80;
         color: $colorDeepPurple80;
-        padding: 12px 24px;
-        font-size: clamp(16px, 1vw, 18px);
+        padding: 0.6vw 1.2vw;
+        font-size: 0.9vw;
         background: transparent;
+
+        @media screen and (max-width: $breakpoint768) {
+            font-size: 16px;
+            padding: 12px 24px;
+        }
 
         &:hover {
             background: $colorDeepPurple80;

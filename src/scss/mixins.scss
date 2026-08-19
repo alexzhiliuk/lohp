@@ -196,8 +196,12 @@
 
 @mixin caption-2 {
     font-family: $fontBody;
-    font-size: clamp(16px, 1vw, 18px);
+    font-size: 0.9vw;
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0;
+
+    @media screen and (max-width: $breakpoint768) {
+        font-size: 16px;
+    }
 }
