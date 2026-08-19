@@ -29,7 +29,6 @@
 
     &__cards {
         display: flex;
-        flex-wrap: wrap;
         gap: clamp(20px, 2vw, 40px);
         row-gap: 10px;
         align-items: center;
@@ -39,12 +38,12 @@
     &__card {
         display: flex;
         align-items: center;
-        gap: 20px;
-        flex: 1 0 430px;
-        padding: 24px;
+        gap: clamp(14px, 1.4vw, 20px);
+        flex: 1 0 clamp(100px, 20vw, 430px);
+        padding: clamp(16px, 1.7vw, 24px);
         background: $colorPinkWhite;
         border: 1px solid $colorVibrantLilac;
-        border-radius: 20px;
+        border-radius: clamp(14px, 1.4vw, 20px);
     }
 
     &__card-emoji {
@@ -55,7 +54,7 @@
     &__card-info {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: clamp(4px, 0.55vw, 8px);
     }
 
     &__card-label {
@@ -66,6 +65,10 @@
     &__card-value {
         @include h4;
         color: $colorDeepPurple80;
+
+        @media screen and (min-width: $breakpoint992) {
+            white-space: nowrap;
+        }
     }
 
     &__description {

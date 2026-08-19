@@ -2384,7 +2384,6 @@ button {
 }
 .garden__cards {
   display: flex;
-  flex-wrap: wrap;
   gap: clamp(20px, 2vw, 40px);
   row-gap: 10px;
   align-items: center;
@@ -2393,12 +2392,12 @@ button {
 .garden__card {
   display: flex;
   align-items: center;
-  gap: 20px;
-  flex: 1 0 430px;
-  padding: 24px;
+  gap: clamp(14px, 1.4vw, 20px);
+  flex: 1 0 clamp(100px, 20vw, 430px);
+  padding: clamp(16px, 1.7vw, 24px);
   background: #FEF9FC;
   border: 1px solid #F8DDFF;
-  border-radius: 20px;
+  border-radius: clamp(14px, 1.4vw, 20px);
 }
 .garden__card-emoji {
   font-family: "Literatura Present", Georgia, "Times New Roman", serif;
@@ -2416,7 +2415,7 @@ button {
 .garden__card-info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: clamp(4px, 0.55vw, 8px);
 }
 .garden__card-label {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
@@ -2435,13 +2434,18 @@ button {
   font-family: "Literatura Present", Georgia, "Times New Roman", serif;
   font-size: clamp(20px, 1.5vw, 34px);
   font-weight: 400;
-  line-height: 40px;
+  line-height: 1.15;
   letter-spacing: -0.68px;
   color: #4F2340;
 }
 @media screen and (max-width: 767.98px) {
   .garden__card-value {
     letter-spacing: 0;
+  }
+}
+@media screen and (min-width: 991.98px) {
+  .garden__card-value {
+    white-space: nowrap;
   }
 }
 .garden__description {
@@ -2595,7 +2599,7 @@ button {
   font-family: "Literatura Present", Georgia, "Times New Roman", serif;
   font-size: clamp(20px, 1.5vw, 34px);
   font-weight: 400;
-  line-height: 40px;
+  line-height: 1.15;
   letter-spacing: -0.68px;
   color: #4F2340;
 }
