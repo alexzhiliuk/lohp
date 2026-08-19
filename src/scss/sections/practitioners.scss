@@ -73,10 +73,12 @@
     }
 
     &__slide {
-        // width: max(254px, 18vw) !important;
-        // height: max(378px, 27vw) !important;
-        width: 354px !important;
-        height: 525px !important;
+        width: max(254px, 18vw) !important;
+        height: max(378px, 27vw) !important;
+        // width: 18vw !important;
+        // height: 27vw !important;
+        // width: 354px !important;
+        // height: 525px !important;
         transition: transform 0.4s ease;
         pointer-events: none;
     }

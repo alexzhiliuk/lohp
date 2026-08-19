@@ -142,7 +142,7 @@ if (document.querySelector('.practitioners__slider')) {
         initialSlide: 4,
         slideToClickedSlide: false,
         watchSlidesProgress: true,
-        allowTouchMove: window.innerWidth < 992,
+        allowTouchMove: true,
         on: {
             init: function () { applyPractitionersTransforms(this); },
             setTranslate: function () { applyPractitionersTransforms(this); },
@@ -219,37 +219,46 @@ const flower3 = document.querySelector('.clarity__flower');
 const flower4 = document.querySelector('.garden__flower');
 
 if (heroBg || flower || flower2 || flower3 || flower4) {
+    let ticking = false;
+
     window.addEventListener('scroll', () => {
-        const viewCenter = window.innerHeight / 2;
+        if (ticking) return;
+        ticking = true;
 
-        if (heroBg) {
-            const offset = window.scrollY * 0.4;
-            heroBg.style.transform = `translateY(${offset}px)`;
-        }
+        requestAnimationFrame(() => {
+            const viewCenter = window.innerHeight / 2;
 
-        if (flower) {
-            const rect = flower.closest('.questions').getBoundingClientRect();
-            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
-            flower.style.transform = `translateY(${offset}px)`;
-        }
+            if (heroBg) {
+                const offset = window.scrollY * 0.4;
+                heroBg.style.transform = `translate3d(0, ${offset}px, 0)`;
+            }
 
-        if (flower2) {
-            const rect = flower2.closest('.practitioners').getBoundingClientRect();
-            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
-            flower2.style.transform = `translateY(${offset}px)`;
-        }
+            if (flower) {
+                const rect = flower.closest('.questions').getBoundingClientRect();
+                const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
+                flower.style.transform = `translate3d(0, ${offset}px, 0)`;
+            }
 
-        if (flower3) {
-            const rect = flower3.closest('.clarity').getBoundingClientRect();
-            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
-            flower3.style.transform = `translateY(${offset}px)`;
-        }
+            if (flower2) {
+                const rect = flower2.closest('.practitioners').getBoundingClientRect();
+                const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
+                flower2.style.transform = `translate3d(0, ${offset}px, 0)`;
+            }
 
-        if (flower4) {
-            const rect = flower4.closest('.garden').getBoundingClientRect();
-            const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
-            flower4.style.transform = `translateY(${offset}px)`;
-        }
+            if (flower3) {
+                const rect = flower3.closest('.clarity').getBoundingClientRect();
+                const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
+                flower3.style.transform = `translate3d(0, ${offset}px, 0)`;
+            }
+
+            if (flower4) {
+                const rect = flower4.closest('.garden').getBoundingClientRect();
+                const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
+                flower4.style.transform = `translate3d(0, ${offset}px, 0)`;
+            }
+
+            ticking = false;
+        });
     });
 }
 

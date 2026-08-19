@@ -695,6 +695,7 @@ button {
   height: 100%;
   object-fit: cover;
   object-position: center top;
+  will-change: transform;
 }
 @media screen and (max-width: 575.98px) {
   .hero__bg-img {
@@ -745,6 +746,11 @@ button {
 @media screen and (max-width: 767.98px) {
   .hero__subtitle {
     letter-spacing: 0;
+  }
+}
+@media screen and (max-width: 575.98px) {
+  .hero__subtitle {
+    max-width: min(265px, 100%);
   }
 }
 .hero__scroll {
@@ -1280,8 +1286,8 @@ button {
   padding: 20px 0 !important;
 }
 .practitioners__slide {
-  width: 354px !important;
-  height: 525px !important;
+  width: max(254px, 18vw) !important;
+  height: max(378px, 27vw) !important;
   transition: transform 0.4s ease;
   pointer-events: none;
 }
