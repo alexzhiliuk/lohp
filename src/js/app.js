@@ -156,7 +156,7 @@ if (document.querySelector('.practitioners__slider')) {
         slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 0,
-        initialSlide: 7,
+        initialSlide: 3,
         slideToClickedSlide: false,
         watchSlidesProgress: true,
         allowTouchMove: true,
