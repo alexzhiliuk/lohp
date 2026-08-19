@@ -2071,9 +2071,9 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 57px;
-  padding: 120px clamp(30px, 13vw, 130px);
-  margin-bottom: 100px;
+  gap: clamp(30px, 4vw, 57px);
+  padding: clamp(80px, 8.3vw, 120px) clamp(30px, 13vw, 130px);
+  margin-bottom: min(5vw, 100px);
 }
 @media screen and (max-width: 767.98px) {
   .features {
@@ -2082,8 +2082,8 @@ button {
 }
 .features__bg-full {
   position: absolute;
-  bottom: -100px;
-  width: 3732px;
+  bottom: -50px;
+  width: clamp(2700px, 194vw, 3732px);
   height: auto;
   pointer-events: none;
   z-index: -1;
@@ -2124,32 +2124,36 @@ button {
 .features__slide {
   display: flex !important;
   align-items: center;
-  gap: 80px;
+  gap: clamp(40px, 4vw, 80px);
   width: 100% !important;
   transition: padding 0.4s ease;
 }
-.features__slide.swiper-slide-active {
-  padding-left: max(0px, (100% - 1258px) / 2);
-  padding-right: max(0px, (100% - 1258px) / 2);
+@media screen and (min-width: 991.98px) {
+  .features__slide.swiper-slide-active .features__card {
+    margin-left: auto;
+  }
+  .features__slide.swiper-slide-active .features__text {
+    margin-right: auto;
+  }
 }
 .features__card {
   flex-shrink: 0;
-  width: 265px;
-  height: 330px;
+  width: clamp(200px, 18.4vw, 265px);
+  height: clamp(250px, 22.9vw, 330px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px 40px;
-  border-radius: 30px;
+  padding: 0 clamp(20px, 2.1vw, 30px) clamp(30px, 2.8vw, 40px);
+  border-radius: clamp(20px, 2.1vw, 30px);
   background: linear-gradient(to bottom, #fef8ff, #F8DDFF);
-  box-shadow: 0 25px 25px #f1d0f9;
+  box-shadow: 0 clamp(15px, 1.7vw, 25px) clamp(15px, 1.7vw, 25px) #f1d0f9;
 }
 .swiper-slide-next .features__card {
   animation: wobble 2s ease-in-out infinite;
 }
 .features__card-icon {
-  width: 120px;
+  width: clamp(90px, 8.3vw, 120px);
   height: auto;
   margin: auto 0;
 }
@@ -2170,7 +2174,7 @@ button {
 .features__text {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: clamp(30px, 4.2vw, 60px);
   flex: 1;
   min-width: min(100%, 500px);
   max-width: 48vw;
