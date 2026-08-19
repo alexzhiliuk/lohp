@@ -1132,6 +1132,8 @@ button {
   .questions__card-back-close {
     width: 14px;
     height: 14px;
+    top: 16px;
+    right: 16px;
   }
   .questions__card_size_sm {
     width: 100px;
