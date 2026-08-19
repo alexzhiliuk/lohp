@@ -81,7 +81,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        padding: 80px 30px 40px;
+        padding: 0 30px 40px;
         border-radius: 30px;
         background: linear-gradient(to bottom, #fef8ff, $colorVibrantLilac);
         box-shadow: 0 25px 25px #f1d0f9;
@@ -92,8 +92,9 @@
     }
 
     &__card-icon {
-        width: 90px;
+        width: 120px;
         height: auto;
+        margin: auto 0
     }
 
     &__card-name {
@@ -232,7 +233,7 @@
         }
 
         &__card-icon {
-            width: 70px;
+            width: 100px;
             height: auto;
         }
 
@@ -255,18 +256,18 @@
         }
 
         &__card {
-            width: 180px;
-            height: 220px;
+            width: 210px;
+            height: 262px;
             padding: 40px 20px 25px;
 
             .swiper-slide-next & {
-                translate: -46vw;
+                translate: -42vw;
                 scale: 0.8;
             }
         }
 
         &__card-icon {
-            width: 60px;
+            width: 100px;
             height: auto;
         }
 
