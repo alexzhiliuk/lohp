@@ -158,16 +158,31 @@ function applyPractitionersTransforms(swiper) {
 }
 
 if (document.querySelector('.practitioners__slider')) {
+    // Triplicate slides for loop mode (7 → 21)
+    const practWrapper = document.querySelector('.practitioners__slider .swiper-wrapper');
+    if (practWrapper) {
+        const originalSlides = [...practWrapper.children];
+        for (let i = 0; i < 2; i++) {
+            originalSlides.forEach(slide => practWrapper.appendChild(slide.cloneNode(true)));
+        }
+    }
+
     practitionersSwiper = new Swiper('.practitioners__slider', {
         slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 0,
-        initialSlide: 3,
+        initialSlide: 10,
+        loop: true,
+        loopAdditionalSlides: 4,
         slideToClickedSlide: false,
         watchSlidesProgress: true,
         allowTouchMove: true,
         on: {
-            init: function () { applyPractitionersTransforms(this); },
+            init: function () {
+                this.loopFix();
+                this.updateSlidesOffset();
+                applyPractitionersTransforms(this);
+            },
             setTranslate: function () { applyPractitionersTransforms(this); },
             slideChange: function () {
                 const activeSlide = this.slides[this.activeIndex];
@@ -187,11 +202,16 @@ if (document.querySelector('.practitioners__slider')) {
 // Practitioners card click: flip on active, navigate on others
 $('.practitioners__slide').on('click', function() {
     if (!practitionersSwiper) return;
-    const slideIndex = $(this).index();
+    const $slide = $(this);
+    const slideEl = this;
+
+    // Find this slide's index in swiper.slides
+    const slideIndex = Array.from(practitionersSwiper.slides).indexOf(slideEl);
+    if (slideIndex === -1) return;
     const activeIndex = practitionersSwiper.activeIndex;
 
     if (slideIndex === activeIndex) {
-        $(this).find('.practitioners__card').toggleClass('practitioners__card_flipped');
+        $slide.find('.practitioners__card').toggleClass('practitioners__card_flipped');
     } else if (slideIndex < activeIndex) {
         practitionersSwiper.slidePrev();
     } else {
@@ -205,12 +225,22 @@ $('.practitioners__filter').on('click', function() {
     $(this).addClass('practitioners__filter_active');
 
     const category = $(this).data('category');
-    const slides = document.querySelectorAll('.practitioners__slide');
+    // Find the nearest slide with this category relative to current position
+    const slides = practitionersSwiper.slides;
+    const activeIndex = practitionersSwiper.activeIndex;
+    let targetIndex = -1;
+    let minDist = Infinity;
     for (let i = 0; i < slides.length; i++) {
         if (slides[i].dataset.category === category) {
-            practitionersSwiper.slideTo(i);
-            break;
+            const dist = Math.abs(i - activeIndex);
+            if (dist < minDist) {
+                minDist = dist;
+                targetIndex = i;
+            }
         }
+    }
+    if (targetIndex !== -1) {
+        practitionersSwiper.slideTo(targetIndex);
     }
 });
 
