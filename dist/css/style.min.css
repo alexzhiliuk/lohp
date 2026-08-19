@@ -2559,6 +2559,7 @@ button {
   line-height: 26px;
   letter-spacing: -0.4px;
   color: #524E47;
+  max-width: clamp(300px, 23vw, 460px);
 }
 .footer__nav {
   flex: 1;
@@ -2664,6 +2665,9 @@ button {
   }
   .footer__inner {
     gap: 60px;
+  }
+  .footer__description {
+    max-width: min(100%, 360px);
   }
   .footer__row {
     flex-direction: column;

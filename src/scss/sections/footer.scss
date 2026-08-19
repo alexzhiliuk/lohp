@@ -35,6 +35,7 @@
     &__description {
         @include body-text-2;
         color: $colorWarmBlack70;
+        max-width: clamp(300px, 23vw, 460px);
     }
 
     &__nav {
@@ -137,6 +138,10 @@
 
         &__inner {
             gap: 60px;
+        }
+
+        &__description {
+            max-width: min(100%, 360px);
         }
 
         &__row {
