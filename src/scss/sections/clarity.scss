@@ -6,7 +6,7 @@
     gap: 50px;
     padding: 120px clamp($spacing-sm, 5vw, $spacing-lg);
     max-width: 100vw;
-    margin-top: 200px;
+    margin-top: min(12vw, 200px);
     background-color: $colorPinkWhite;
 
     &__flower {
@@ -36,15 +36,19 @@
         @include h2;
         color: $colorDeepPurple80;
         text-align: center;
-        width: min(100%, 1260px);
+        width: min(65vw, 1260px);
+
+        @media screen and (max-width: $breakpoint576) {
+            width: 100%;
+        }
     }
 
     &__stats {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         padding: 30px 80px;
-        gap: 40px;
+        gap: min(6vw, 120px);
         flex-wrap: wrap;
         width: 100%;
         max-width: 1040px;
@@ -72,7 +76,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 100px;
+        gap: min(1.7vw, 35px);
     }
 
     &__avatars {
@@ -95,8 +99,9 @@
     &__press {
         display: flex;
         align-items: center;
-        gap: 108px;
+        gap: min(5vw, 108px);
         opacity: 0.8;
+        margin-top: min(3vw, 75px);
     }
 
     &__press-logo {

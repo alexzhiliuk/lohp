@@ -90,8 +90,9 @@ if (questionsSection) {
 }
 
 // Practitioners slider
-const VISUAL_GAP = 20;
-const DESKTOP_SCALES = [1, 0.85, 0.73, 0.63, 0.55];
+const DESKTOP_GAP = 40;
+const MOBILE_GAP = 20;
+const DESKTOP_SCALES = [1, 0.91, 0.625, 0.52, 0.38];
 const MOBILE_SCALES = [1, 0.77, 0.59, 0.45, 0.35];
 const MOBILE_BP_PRACT = 576;
 let practitionersSwiper = null;
@@ -114,11 +115,16 @@ function getScaleForProgress(p) {
     return scales[low] + (scales[high] - scales[low]) * t;
 }
 
+function getVisualGap() {
+    return window.innerWidth < MOBILE_BP_PRACT ? MOBILE_GAP : DESKTOP_GAP;
+}
+
 function applyPractitionersTransforms(swiper) {
     const slideW = getSlideW();
+    const visualGap = getVisualGap();
     const swiperCenter = -swiper.translate + swiper.width / 2;
 
-    swiper.slides.forEach((slide, i) => {
+    swiper.slides.forEach((slide) => {
         const slideCenter = slide.swiperSlideOffset + slideW / 2;
         const p = (slideCenter - swiperCenter) / slideW;
         const abs = Math.abs(p);
@@ -133,14 +139,14 @@ function applyPractitionersTransforms(swiper) {
                 const s = scales[Math.min(d, scales.length - 1)];
                 const sPrev = scales[Math.min(d - 1, scales.length - 1)];
                 const extraGap = slideW * (1 - s) / 2 + slideW * (1 - sPrev) / 2;
-                offsetX += extraGap - VISUAL_GAP;
+                offsetX += extraGap - visualGap;
             }
             const frac = abs - wholePart;
             if (frac > 0) {
                 const s = getScaleForProgress(abs);
                 const sPrev = getScaleForProgress(wholePart);
                 const extraGap = slideW * (1 - s) / 2 + slideW * (1 - sPrev) / 2;
-                offsetX += frac * (extraGap - VISUAL_GAP);
+                offsetX += frac * (extraGap - visualGap);
             }
             offsetX *= sign;
         }

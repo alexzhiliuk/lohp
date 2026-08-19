@@ -28,7 +28,7 @@
         }
 
         @media (max-width: $breakpoint576) {
-            width: 1155px;
+            width: min(308vw, 1261px);
             top: 40%;
         }
     }
