@@ -42,8 +42,13 @@ if (questionsSection) {
             questionsSwiper = new Swiper('.questions__slider', {
                 slidesPerView: 'auto',
                 centeredSlides: true,
-                spaceBetween: -20,
+                spaceBetween: -100,
                 initialSlide: 2,
+                on: {
+                    slideChangeTransitionStart: function () {
+                        $('.questions__slide_flipped').removeClass('questions__slide_flipped');
+                    },
+                },
             });
         } else if (window.innerWidth >= MOBILE_BP && questionsSwiper) {
             questionsSwiper.destroy(true, true);
@@ -86,43 +91,55 @@ if (questionsSection) {
 
 // Practitioners slider
 const VISUAL_GAP = 20;
-const SCALES = [1, 0.85, 0.73, 0.63, 0.55];
-const SLIDE_W = 354;
+const DESKTOP_SCALES = [1, 0.85, 0.73, 0.63, 0.55];
+const MOBILE_SCALES = [1, 0.77, 0.59, 0.45, 0.35];
+const MOBILE_BP_PRACT = 576;
 let practitionersSwiper = null;
 
+function getSlideW() {
+    return window.innerWidth < MOBILE_BP_PRACT ? window.innerWidth * 0.75 : 354;
+}
+
+function getScales() {
+    return window.innerWidth < MOBILE_BP_PRACT ? MOBILE_SCALES : DESKTOP_SCALES;
+}
+
 function getScaleForProgress(p) {
-    const abs = Math.min(Math.abs(p), SCALES.length - 1);
+    const scales = getScales();
+    const abs = Math.min(Math.abs(p), scales.length - 1);
     const low = Math.floor(abs);
     const high = Math.ceil(abs);
-    if (low === high) return SCALES[low];
+    if (low === high) return scales[low];
     const t = abs - low;
-    return SCALES[low] + (SCALES[high] - SCALES[low]) * t;
+    return scales[low] + (scales[high] - scales[low]) * t;
 }
 
 function applyPractitionersTransforms(swiper) {
+    const slideW = getSlideW();
     const swiperCenter = -swiper.translate + swiper.width / 2;
 
     swiper.slides.forEach((slide, i) => {
-        const slideCenter = slide.swiperSlideOffset + SLIDE_W / 2;
-        const p = (slideCenter - swiperCenter) / SLIDE_W;
+        const slideCenter = slide.swiperSlideOffset + slideW / 2;
+        const p = (slideCenter - swiperCenter) / slideW;
         const abs = Math.abs(p);
         const scale = getScaleForProgress(p);
+        const scales = getScales();
 
         let offsetX = 0;
         if (abs > 0) {
             const sign = p > 0 ? -1 : 1;
             const wholePart = Math.floor(abs);
             for (let d = 1; d <= wholePart; d++) {
-                const s = SCALES[Math.min(d, SCALES.length - 1)];
-                const sPrev = SCALES[Math.min(d - 1, SCALES.length - 1)];
-                const extraGap = SLIDE_W * (1 - s) / 2 + SLIDE_W * (1 - sPrev) / 2;
+                const s = scales[Math.min(d, scales.length - 1)];
+                const sPrev = scales[Math.min(d - 1, scales.length - 1)];
+                const extraGap = slideW * (1 - s) / 2 + slideW * (1 - sPrev) / 2;
                 offsetX += extraGap - VISUAL_GAP;
             }
             const frac = abs - wholePart;
             if (frac > 0) {
                 const s = getScaleForProgress(abs);
                 const sPrev = getScaleForProgress(wholePart);
-                const extraGap = SLIDE_W * (1 - s) / 2 + SLIDE_W * (1 - sPrev) / 2;
+                const extraGap = slideW * (1 - s) / 2 + slideW * (1 - sPrev) / 2;
                 offsetX += frac * (extraGap - VISUAL_GAP);
             }
             offsetX *= sign;
@@ -139,7 +156,7 @@ if (document.querySelector('.practitioners__slider')) {
         slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 0,
-        initialSlide: 4,
+        initialSlide: 7,
         slideToClickedSlide: false,
         watchSlidesProgress: true,
         allowTouchMove: true,

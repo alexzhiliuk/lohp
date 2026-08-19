@@ -297,6 +297,10 @@
         line-height: 1.15;
         letter-spacing: -2.68px;
         color: $colorPinkWhite;
+
+        @media screen and (max-width: $breakpoint768) {
+            letter-spacing: 0;
+        }
     }
 
     &__card-tag {
@@ -477,8 +481,64 @@
         }
 
         &__slide {
-            width: 240px !important;
-            height: 360px !important;
+            width: 75vw !important;
+            height: calc(75vw * 1.5) !important;
+        }
+
+        .swiper-slide-active .practitioners__card:hover .practitioners__card-inner,
+        .swiper-slide-prev .practitioners__card:hover .practitioners__card-inner,
+        .swiper-slide-next .practitioners__card:hover .practitioners__card-inner {
+            transform: none;
+        }
+
+        .swiper-slide-active .practitioners__card-blur {
+            opacity: 1;
+        }
+
+        .swiper-slide-active .practitioners__card-info {
+            opacity: 1;
+        }
+
+        .swiper-slide-active .practitioners__card-overlay {
+            pointer-events: auto;
+        }
+
+        &__card-overlay {
+            padding: 0 8vw 9.6vw;
+        }
+
+        &__card-name {
+            font-size: 48px;
+        }
+
+        &__card-tag {
+            font-size: 13px;
+        }
+
+        &__card-desc {
+            font-size: 13px;
+        }
+
+        &__card-back-icon {
+            width: 36px;
+            height: 36px;
+        }
+
+        &__card-back-title {
+            font-size: 28px;
+        }
+
+        &__card-back-desc {
+            font-size: 16px;
+        }
+
+        &__card-back-pill {
+            font-size: 14px;
+        }
+
+        &__card-back-pill-icon {
+            width: 18px;
+            height: 18px;
         }
 
         &__filters {

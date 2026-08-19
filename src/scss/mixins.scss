@@ -140,6 +140,10 @@
     font-weight: 400;
     line-height: 1.15;
     letter-spacing: -2.68px;
+
+    @media screen and (max-width: $breakpoint768) {
+        letter-spacing: 0;
+    }
 }
 
 @mixin h4 {
@@ -148,6 +152,10 @@
     font-weight: 400;
     line-height: 40px;
     letter-spacing: -0.68px;
+
+    @media screen and (max-width: $breakpoint768) {
+        letter-spacing: 0;
+    }
 }
 
 @mixin subtitle {

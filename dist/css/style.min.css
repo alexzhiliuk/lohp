@@ -437,7 +437,7 @@ button {
 .btn--primary {
   background: #4F2340;
   color: #FFFFFF;
-  padding: 22px 60px;
+  padding: clamp(16px, 1.5vw, 22px) clamp(40px, 3vw, 60px);
   font-size: clamp(18px, 3vw, 24px);
   font-weight: 500;
 }
@@ -898,10 +898,10 @@ button {
   font-size: 24px;
 }
 .questions__card_size_sm .questions__card-back-title {
-  font-size: 20px;
+  font-size: 18px;
 }
 .questions__card_size_sm .questions__card-back-text {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.4;
 }
 .questions__card_size_md {
@@ -935,10 +935,10 @@ button {
   font-size: 48px;
 }
 .questions__card_size_lg .questions__card-back-title {
-  font-size: 28px;
+  font-size: 22px;
 }
 .questions__card_size_lg .questions__card-back-text {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.5;
 }
 .questions__cards_spread .questions__card:nth-child(1) {
@@ -986,9 +986,9 @@ button {
   filter: blur(80px);
 }
 .questions__slide {
-  width: 200px !important;
-  height: 266px !important;
-  transform: rotate(20deg) scale(0.85) translateY(25px);
+  width: 74vw !important;
+  height: 98.42vw !important;
+  transform: scale(0.75) translateY(25px) !important;
   transition: transform 0.3s ease;
   z-index: 1;
 }
@@ -997,11 +997,11 @@ button {
   z-index: 5;
 }
 .questions__slide.swiper-slide-prev {
-  transform: rotate(-10deg) scale(0.9) translateY(15px) !important;
+  transform: rotate(-10deg) scale(0.75) translateY(35px) !important;
   z-index: 3;
 }
 .questions__slide.swiper-slide-next {
-  transform: rotate(10deg) scale(0.9) translateY(15px) !important;
+  transform: rotate(10deg) scale(0.75) translateY(35px) !important;
   z-index: 3;
 }
 .questions__slide .questions__card-front,
@@ -1009,20 +1009,17 @@ button {
   border-radius: 16px;
 }
 .questions__slide .questions__card-name {
-  font-size: 28px;
+  font-size: 48px;
 }
 .questions__slide .questions__card-back-title {
-  font-size: 20px;
+  font-size: 28px;
 }
 .questions__slide .questions__card-back-text {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.4;
 }
-.questions__slide:hover .questions__card-inner {
-  transform: translateY(-15px);
-}
 .questions__slide_flipped .questions__card-inner {
-  transform: translateY(-15px) rotateY(180deg) scale(1.5) !important;
+  transform: rotateY(180deg) !important;
 }
 .questions__card-inner {
   width: 100%;
@@ -1123,6 +1120,10 @@ button {
   .questions__cards {
     height: 220px;
   }
+  .questions__card-back-close {
+    width: 14px;
+    height: 14px;
+  }
   .questions__card_size_sm {
     width: 100px;
     height: 133px;
@@ -1157,10 +1158,11 @@ button {
     font-size: 26px;
   }
   .questions__card_size_lg .questions__card-back-title {
-    font-size: 18px;
+    font-size: 16px;
   }
   .questions__card_size_lg .questions__card-back-text {
-    font-size: 12px;
+    font-size: 10px;
+    line-height: 1;
   }
   .questions__cards_spread .questions__card:nth-child(1) {
     transform: rotate(-20deg) translateX(-125px);
@@ -1475,6 +1477,11 @@ button {
   letter-spacing: -2.68px;
   color: #FEF9FC;
 }
+@media screen and (max-width: 767.98px) {
+  .practitioners__card-name {
+    letter-spacing: 0;
+  }
+}
 .practitioners__card-tag {
   display: inline-flex;
   align-items: center;
@@ -1629,8 +1636,51 @@ button {
     letter-spacing: -1.36px;
   }
   .practitioners__slide {
-    width: 240px !important;
-    height: 360px !important;
+    width: 75vw !important;
+    height: 112.5vw !important;
+  }
+  .practitioners .swiper-slide-active .practitioners__card:hover .practitioners__card-inner,
+  .practitioners .swiper-slide-prev .practitioners__card:hover .practitioners__card-inner,
+  .practitioners .swiper-slide-next .practitioners__card:hover .practitioners__card-inner {
+    transform: none;
+  }
+  .practitioners .swiper-slide-active .practitioners__card-blur {
+    opacity: 1;
+  }
+  .practitioners .swiper-slide-active .practitioners__card-info {
+    opacity: 1;
+  }
+  .practitioners .swiper-slide-active .practitioners__card-overlay {
+    pointer-events: auto;
+  }
+  .practitioners__card-overlay {
+    padding: 0 8vw 9.6vw;
+  }
+  .practitioners__card-name {
+    font-size: 48px;
+  }
+  .practitioners__card-tag {
+    font-size: 13px;
+  }
+  .practitioners__card-desc {
+    font-size: 13px;
+  }
+  .practitioners__card-back-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .practitioners__card-back-title {
+    font-size: 28px;
+  }
+  .practitioners__card-back-desc {
+    font-size: 16px;
+  }
+  .practitioners__card-back-pill {
+    font-size: 14px;
+  }
+  .practitioners__card-back-pill-icon {
+    width: 18px;
+    height: 18px;
   }
   .practitioners__filters {
     display: none;
@@ -1707,6 +1757,11 @@ button {
   line-height: 1.15;
   letter-spacing: -2.68px;
   color: #A43F66;
+}
+@media screen and (max-width: 767.98px) {
+  .clarity__stat-number {
+    letter-spacing: 0;
+  }
 }
 .clarity__stat-label {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
@@ -1785,6 +1840,8 @@ button {
     letter-spacing: -1.36px;
   }
   .clarity__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
   }
   .clarity__stat-number {
@@ -1863,6 +1920,11 @@ button {
   line-height: 1.15;
   letter-spacing: -2.68px;
   color: #FEF9FC;
+}
+@media screen and (max-width: 767.98px) {
+  .testimonials__quote {
+    letter-spacing: 0;
+  }
 }
 .testimonials__author {
   display: flex;
@@ -2312,6 +2374,11 @@ button {
   letter-spacing: -2.68px;
   flex-shrink: 0;
 }
+@media screen and (max-width: 767.98px) {
+  .garden__card-emoji {
+    letter-spacing: 0;
+  }
+}
 .garden__card-info {
   display: flex;
   flex-direction: column;
@@ -2332,6 +2399,11 @@ button {
   line-height: 40px;
   letter-spacing: -0.68px;
   color: #4F2340;
+}
+@media screen and (max-width: 767.98px) {
+  .garden__card-value {
+    letter-spacing: 0;
+  }
 }
 .garden__description {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
@@ -2487,6 +2559,11 @@ button {
   line-height: 40px;
   letter-spacing: -0.68px;
   color: #4F2340;
+}
+@media screen and (max-width: 767.98px) {
+  .footer__app-title {
+    letter-spacing: 0;
+  }
 }
 .footer__badges {
   display: flex;

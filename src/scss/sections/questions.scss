@@ -101,11 +101,11 @@
             }
 
             .questions__card-back-title {
-                font-size: 20px;
+                font-size: 18px;
             }
 
             .questions__card-back-text {
-                font-size: 13px;
+                font-size: 12px;
                 line-height: 1.4;
             }
         }
@@ -148,11 +148,11 @@
             }
 
             .questions__card-back-title {
-                font-size: 28px;
+                font-size: 22px;
             }
 
             .questions__card-back-text {
-                font-size: 15px;
+                font-size: 14px;
                 line-height: 1.5;
             }
         }
@@ -195,9 +195,9 @@
     }
 
     &__slide {
-        width: 200px !important;
-        height: 266px !important;
-        transform: rotate(20deg) scale(0.85) translateY(25px);
+        width: 74vw !important;
+        height: calc(74vw * 1.33) !important;
+        transform: scale(0.75) translateY(25px) !important;
         transition: transform 0.3s ease;
         z-index: 1;
 
@@ -207,12 +207,12 @@
         }
 
         &.swiper-slide-prev {
-            transform: rotate(-10deg) scale(0.9) translateY(15px) !important;
+            transform: rotate(-10deg) scale(0.75) translateY(35px) !important;
             z-index: 3;
         }
 
         &.swiper-slide-next {
-            transform: rotate(10deg) scale(0.9) translateY(15px) !important;
+            transform: rotate(10deg) scale(0.75) translateY(35px) !important;
             z-index: 3;
         }
 
@@ -222,27 +222,21 @@
         }
 
         .questions__card-name {
-            font-size: 28px;
+            font-size: 48px;
         }
 
         .questions__card-back-title {
-            font-size: 20px;
+            font-size: 28px;
         }
 
         .questions__card-back-text {
-            font-size: 13px;
+            font-size: 16px;
             line-height: 1.4;
-        }
-
-        &:hover {
-            .questions__card-inner {
-                transform: translateY(-15px);
-            }
         }
 
         &_flipped {
             .questions__card-inner {
-                transform: translateY(-15px) rotateY(180deg) scale(1.5) !important;
+                transform: rotateY(180deg) !important;
             }
         }
     }
@@ -363,6 +357,11 @@
             height: 220px;
         }
 
+        &__card-back-close {
+            width: 14px;
+            height: 14px;
+        }
+
         &__card {
             &_size_sm {
                 width: 100px;
@@ -387,8 +386,8 @@
                 height: 192px;
 
                 .questions__card-name { font-size: 26px; }
-                .questions__card-back-title { font-size: 18px; }
-                .questions__card-back-text { font-size: 12px; }
+                .questions__card-back-title { font-size: 16px; }
+                .questions__card-back-text { font-size: 10px; line-height: 1; }
             }
         }
 
