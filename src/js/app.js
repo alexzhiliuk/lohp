@@ -235,25 +235,25 @@ if (heroBg || flower || flower2 || flower3 || flower4) {
 
             if (flower) {
                 const rect = flower.closest('.questions').getBoundingClientRect();
-                const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
+                const offset = (rect.top + rect.height / 2 - viewCenter) * -0.2;
                 flower.style.transform = `translate3d(0, ${offset}px, 0)`;
             }
 
             if (flower2) {
                 const rect = flower2.closest('.practitioners').getBoundingClientRect();
-                const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
+                const offset = (rect.top + rect.height / 2 - viewCenter) * -0.2;
                 flower2.style.transform = `translate3d(0, ${offset}px, 0)`;
             }
 
             if (flower3) {
                 const rect = flower3.closest('.clarity').getBoundingClientRect();
-                const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
+                const offset = (rect.top + rect.height / 2 - viewCenter) * -0.2;
                 flower3.style.transform = `translate3d(0, ${offset}px, 0)`;
             }
 
             if (flower4) {
                 const rect = flower4.closest('.garden').getBoundingClientRect();
-                const offset = (rect.top + rect.height / 2 - viewCenter) * -0.1;
+                const offset = (rect.top + rect.height / 2 - viewCenter) * -0.2;
                 flower4.style.transform = `translate3d(0, ${offset}px, 0)`;
             }
 

@@ -188,7 +188,7 @@
 
 @mixin caption-2 {
     font-family: $fontBody;
-    font-size: 18px;
+    font-size: clamp(16px, 1vw, 18px);
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0;

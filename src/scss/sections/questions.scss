@@ -1,5 +1,6 @@
 .questions {
     position: relative;
+    z-index: 2;
     padding: 100px clamp($spacing-md, 13vw, $spacing-5xl) 105px;
     display: flex;
     flex-direction: column;
@@ -19,7 +20,7 @@
         position: absolute;
         left: 0;
         bottom: 0;
-        width: clamp(150px, 20vw, 400px);
+        width: clamp(150px, 22vw, 450px);
         pointer-events: none;
         z-index: 0;
         will-change: transform;
@@ -169,7 +170,7 @@
         .questions__card {
             &:nth-child(1) { transform: rotate(-20deg) translateX(-360px) translateY(-150px); z-index: 1; }
             &:nth-child(2) { transform: rotate(-10deg) translateX(-200px) translateY(-90px); z-index: 2; }
-            &:nth-child(3) { transform: rotate(0deg) translateX(0) translateY(-80px); z-index: 3; }
+            &:nth-child(3) { transform: rotate(0deg) translateX(0) translateY(-75px); z-index: 3; }
             &:nth-child(4) { transform: rotate(10deg) translateX(200px) translateY(-90px); z-index: 2; }
             &:nth-child(5) { transform: rotate(20deg) translateX(360px) translateY(-150px); z-index: 1; }
         }

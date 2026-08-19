@@ -19,7 +19,8 @@
     }
 
     &__brand {
-        width: 486px;
+        width: 25vw;
+        max-width: 486px;
         flex-shrink: 0;
         display: flex;
         flex-direction: column;
@@ -27,7 +28,7 @@
     }
 
     &__logo {
-        width: 190px;
+        width: clamp(115px, 10vw, 190px);
         height: auto;
     }
 
@@ -76,6 +77,7 @@
 
     &__badges {
         display: flex;
+        flex-wrap: wrap;
         gap: 12px;
     }
 
@@ -140,10 +142,15 @@
         &__row {
             flex-direction: column;
             gap: 60px;
+
+            &:nth-of-type(2) {
+                flex-direction: column-reverse;
+            }
         }
 
         &__brand {
             width: 100%;
+            max-width: 100%;
         }
 
         &__logo {

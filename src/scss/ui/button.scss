@@ -26,7 +26,7 @@
         border: 1px solid $colorDeepPurple80;
         color: $colorDeepPurple80;
         padding: 12px 24px;
-        font-size: 18px;
+        font-size: clamp(16px, 1vw, 18px);
         background: transparent;
 
         &:hover {
