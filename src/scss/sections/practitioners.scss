@@ -491,6 +491,14 @@
             transform: none;
         }
 
+
+        .swiper-slide-prev .practitioners__card:hover .practitioners__card-info, 
+        .swiper-slide-prev .practitioners__card:hover .practitioners__card-blur, 
+        .swiper-slide-next .practitioners__card:hover .practitioners__card-info,
+        .swiper-slide-next .practitioners__card:hover .practitioners__card-blur {
+            opacity: 0;
+        }
+
         .swiper-slide-active .practitioners__card-blur {
             opacity: 1;
         }

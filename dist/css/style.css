@@ -950,7 +950,7 @@ button {
   z-index: 2;
 }
 .questions__cards_spread .questions__card:nth-child(3) {
-  transform: rotate(0deg) translateX(0) translateY(-75px);
+  transform: rotate(0deg) translateX(0) translateY(-65px);
   z-index: 3;
 }
 .questions__cards_spread .questions__card:nth-child(4) {
@@ -1643,6 +1643,12 @@ button {
   .practitioners .swiper-slide-prev .practitioners__card:hover .practitioners__card-inner,
   .practitioners .swiper-slide-next .practitioners__card:hover .practitioners__card-inner {
     transform: none;
+  }
+  .practitioners .swiper-slide-prev .practitioners__card:hover .practitioners__card-info,
+  .practitioners .swiper-slide-prev .practitioners__card:hover .practitioners__card-blur,
+  .practitioners .swiper-slide-next .practitioners__card:hover .practitioners__card-info,
+  .practitioners .swiper-slide-next .practitioners__card:hover .practitioners__card-blur {
+    opacity: 0;
   }
   .practitioners .swiper-slide-active .practitioners__card-blur {
     opacity: 1;
