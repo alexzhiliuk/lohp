@@ -97,7 +97,10 @@ const MOBILE_SCALES = [1, 0.77, 0.59, 0.45, 0.35];
 const MOBILE_BP_PRACT = 576;
 let practitionersSwiper = null;
 
-function getSlideW() {
+function getSlideW(swiper) {
+    if (swiper && swiper.slides && swiper.slides[0]) {
+        return swiper.slides[0].offsetWidth;
+    }
     return window.innerWidth < MOBILE_BP_PRACT ? window.innerWidth * 0.75 : 354;
 }
 
@@ -116,11 +119,12 @@ function getScaleForProgress(p) {
 }
 
 function getVisualGap() {
-    return window.innerWidth < MOBILE_BP_PRACT ? MOBILE_GAP : DESKTOP_GAP;
+    if (window.innerWidth < MOBILE_BP_PRACT) return MOBILE_GAP;
+    return Math.max(20, window.innerWidth * (40 / 1920));
 }
 
 function applyPractitionersTransforms(swiper) {
-    const slideW = getSlideW();
+    const slideW = getSlideW(swiper);
     const visualGap = getVisualGap();
     const swiperCenter = -swiper.translate + swiper.width / 2;
 
