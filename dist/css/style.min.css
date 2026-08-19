@@ -2127,7 +2127,7 @@ button {
 }
 .features__card-icon {
   width: 90px;
-  height: 90px;
+  height: auto;
 }
 .features__card-name {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
@@ -2275,7 +2275,7 @@ button {
   }
   .features__card-icon {
     width: 70px;
-    height: 70px;
+    height: auto;
   }
   .features__title {
     font-size: 44px;
@@ -2303,7 +2303,7 @@ button {
   }
   .features__card-icon {
     width: 60px;
-    height: 60px;
+    height: auto;
   }
   .features__card-name {
     font-size: 20px;
