@@ -37,18 +37,10 @@
         display: flex;
         flex-direction: column;
         gap: $spacing-sm;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
 
         @media screen and (max-width: $breakpoint576) {
             width: 100%;
         }
-    }
-
-    &__header_visible {
-        opacity: 1;
-        transform: translateY(0);
     }
 
     &__title {

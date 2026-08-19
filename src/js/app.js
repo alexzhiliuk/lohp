@@ -18,7 +18,20 @@ $('.header__overlay').on('click', function() {
     $('html').removeClass('lock');
 });
 
-// Questions section — fade in + card spread / swiper
+// Fade-in animation for titles/subtitles
+document.querySelectorAll('.fade-in').forEach(el => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                el.classList.add('fade-in_visible');
+                observer.unobserve(el);
+            }
+        });
+    }, { rootMargin: '0px 0px -30% 0px' });
+    observer.observe(el);
+});
+
+// Questions section — card spread / swiper
 const questionsSection = document.querySelector('.questions');
 if (questionsSection) {
     const MOBILE_BP = 576;
@@ -38,20 +51,7 @@ if (questionsSection) {
         }
     }
 
-    const header = questionsSection.querySelector('.questions__header');
     const cards = questionsSection.querySelector('.questions__cards');
-
-    if (header) {
-        const headerObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    header.classList.add('questions__header_visible');
-                    headerObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-        headerObserver.observe(header);
-    }
 
     if (cards && window.innerWidth >= MOBILE_BP) {
         const cardsObserver = new IntersectionObserver((entries) => {
@@ -272,7 +272,7 @@ if (claritySection) {
                     const target = parseFloat(el.dataset.target);
                     const decimals = parseInt(el.dataset.decimals) || 0;
                     const suffix = el.dataset.suffix || '';
-                    const duration = 2000;
+                    const duration = 1000;
                     const startTime = performance.now();
 
                     function update(now) {
