@@ -175,7 +175,7 @@ if (document.querySelector('.practitioners__slider')) {
         slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 0,
-        initialSlide: 10,
+        initialSlide: 7,
         loop: true,
         loopAdditionalSlides: 4,
         slideToClickedSlide: false,
@@ -203,20 +203,23 @@ if (document.querySelector('.practitioners__slider')) {
     });
 }
 
-// Practitioners card click: flip on active, navigate on others
+// Practitioners card click: flip on center 3, navigate on others
 $('.practitioners__slide').on('click', function() {
     if (!practitionersSwiper) return;
     const $slide = $(this);
     const slideEl = this;
 
-    // Find this slide's index in swiper.slides
     const slideIndex = Array.from(practitionersSwiper.slides).indexOf(slideEl);
     if (slideIndex === -1) return;
     const activeIndex = practitionersSwiper.activeIndex;
+    const diff = slideIndex - activeIndex;
 
-    if (slideIndex === activeIndex) {
-        $slide.find('.practitioners__card').toggleClass('practitioners__card_flipped');
-    } else if (slideIndex < activeIndex) {
+    if (Math.abs(diff) <= 1) {
+        const $card = $slide.find('.practitioners__card');
+        const wasFlipped = $card.hasClass('practitioners__card_flipped');
+        $('.practitioners__card_flipped').removeClass('practitioners__card_flipped');
+        if (!wasFlipped) $card.addClass('practitioners__card_flipped');
+    } else if (diff < 0) {
         practitionersSwiper.slidePrev();
     } else {
         practitionersSwiper.slideNext();

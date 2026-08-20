@@ -1271,7 +1271,7 @@ button {
 .practitioners__flower {
   position: absolute;
   right: 0;
-  bottom: -100px;
+  bottom: -150px;
   width: clamp(150px, 25vw, 350px);
   height: auto;
   pointer-events: none;
