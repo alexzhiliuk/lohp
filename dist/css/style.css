@@ -882,6 +882,7 @@ button {
   position: absolute;
   transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   transform: rotate(0deg) translateX(0) translateY(20px);
+  transform-style: preserve-3d;
   z-index: 1;
   cursor: pointer;
 }
@@ -895,18 +896,18 @@ button {
   z-index: 10 !important;
 }
 .questions__card_flipped .questions__card-inner {
-  transform: translateY(-20px) rotateY(180deg) scale(1.5) !important;
+  transform: translateY(-75px) rotateY(180deg) scale(1.5) !important;
 }
 .questions__card_size_sm.questions__card_flipped .questions__card-inner {
-  transform: translateY(-20px) rotateY(180deg) scale(2) !important;
+  transform: translateY(-85px) rotateY(180deg) scale(2) !important;
 }
 @media screen and (max-width: 991.98px) {
   .questions__card_size_sm.questions__card_flipped .questions__card-inner {
-    transform: translateY(-20px) rotateY(180deg) scale(1.7) !important;
+    transform: translateY(-70px) rotateY(180deg) scale(1.7) !important;
   }
 }
 .questions__card_size_md.questions__card_flipped .questions__card-inner {
-  transform: translateY(-20px) rotateY(180deg) scale(1.5) !important;
+  transform: translateY(-80px) rotateY(180deg) scale(1.5) !important;
 }
 .questions__card_size_sm {
   width: clamp(119px, 8.4vw, 162px);
@@ -925,6 +926,10 @@ button {
 .questions__card_size_sm .questions__card-back-text {
   font-size: clamp(8px, 0.5vw, 10px);
   line-height: 1.4;
+}
+.questions__card_size_sm .questions__card-back-close {
+  width: clamp(10px, 0.7vw, 16px);
+  height: clamp(10px, 0.7vw, 16px);
 }
 .questions__card_size_md {
   width: clamp(153px, 10.9vw, 209px);
@@ -1033,6 +1038,11 @@ button {
 }
 .questions__slide .questions__card-name {
   font-size: clamp(36px, 12.8vw, 48px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.questions__slide.swiper-slide-active .questions__card-name {
+  opacity: 1;
 }
 .questions__slide .questions__card-back-title {
   font-size: clamp(22px, 7.5vw, 28px);
@@ -1107,11 +1117,13 @@ button {
   font-family: "Literatura Present", Georgia, "Times New Roman", serif;
   font-weight: 400;
   color: #4F2340;
+  text-align: left;
 }
 .questions__card-back-text {
   font-family: "ABC Social", "Inter", Arial, sans-serif;
   font-weight: 400;
   color: #4F2340;
+  text-align: left;
 }
 .questions__cards::after {
   content: "";
